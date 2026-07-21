@@ -94,18 +94,18 @@ export function Hero() {
               hidden: { opacity: 0, y: 20 },
               show: { opacity: 1, y: 0 },
             }}
-            className="mt-10 flex flex-wrap items-center gap-4"
+            className="mt-10 flex flex-nowrap items-center gap-2 sm:gap-4"
           >
             <a
               href="#consult"
-              className="btn-premium group inline-flex h-14 items-center gap-2 rounded-full px-8 text-base font-semibold"
+              className="btn-premium group inline-flex h-12 sm:h-14 shrink-0 items-center gap-2 rounded-full px-4 sm:px-8 text-sm sm:text-base font-semibold whitespace-nowrap"
             >
               <MessageCircle className="h-5 w-5" strokeWidth={2.4} />
-              Chat with AI Astrologer
+              Chat Now
             </a>
             <a
               href="#kundli"
-              className="btn-outline-orange inline-flex h-14 items-center gap-2 rounded-full px-8 text-base"
+              className="btn-outline-orange inline-flex h-12 sm:h-14 shrink-0 items-center gap-2 rounded-full px-4 sm:px-8 text-sm sm:text-base whitespace-nowrap"
             >
               <ShoppingBag className="h-5 w-5" strokeWidth={2.4} />
               Shop Now
