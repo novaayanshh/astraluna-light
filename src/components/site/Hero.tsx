@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { MessageCircle, ShoppingBag, Star } from "lucide-react";
 import cosmicHero from "@/assets/cosmic-hero.jpg";
 import { Particles } from "./Particles";
-
 const STATS = [
   { value: "500+", label: "Vedic Experts" },
   { value: "2M+", label: "Consultations" },
@@ -103,13 +103,13 @@ export function Hero() {
               <MessageCircle className="h-5 w-5" strokeWidth={2.4} />
               Chat Now
             </a>
-            <a
-              href="#kundli"
+            <Link
+              to="/shop"
               className="btn-outline-orange inline-flex h-12 sm:h-14 shrink-0 items-center gap-2 rounded-full px-4 sm:px-8 text-sm sm:text-base whitespace-nowrap"
             >
               <ShoppingBag className="h-5 w-5" strokeWidth={2.4} />
               Shop Now
-            </a>
+            </Link>
           </motion.div>
 
           <motion.dl
