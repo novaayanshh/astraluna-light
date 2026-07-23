@@ -1,23 +1,49 @@
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { ChevronDown, Menu, Sparkles, User, X } from "lucide-react";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { ChevronDown, LogOut, Menu, Sparkles, User, X } from "lucide-react";
 import { useState } from "react";
-
+import { useAuth } from "@/hooks/use-auth";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const NAV_ITEMS = [
-  { label: "Horoscopes", href: "#horoscope", hasDropdown: true },
-  { label: "Consultation", href: "#astrologers", hasDropdown: true },
-  { label: "Doshas", href: "#services", hasDropdown: true },
-  { label: "Muhurat", href: "#kundli", hasDropdown: true },
-  { label: "Shop", href: "#shop" },
-  { label: "Blogs", href: "#blogs" },
+  { label: "Horoscopes", href: "/#horoscope", hasDropdown: true },
+  { label: "Consultation", href: "/#astrologers", hasDropdown: true },
+  { label: "Doshas", href: "/#services", hasDropdown: true },
+  { label: "Muhurat", href: "/#kundli", hasDropdown: true },
+  { label: "Shop", href: "/shop" },
+  { label: "Blogs", href: "/blog" },
 ];
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
+  const { user, signOut } = useAuth();
+  const navigate = useNavigate();
 
   useMotionValueEvent(scrollY, "change", (v) => setScrolled(v > 30));
+
+  function handleSignOut() {
+    signOut();
+    setOpen(false);
+    navigate({ to: "/" });
+  }
+
+  const initials = user
+    ? user.name
+        .split(" ")
+        .map((part) => part[0])
+        .slice(0, 2)
+        .join("")
+        .toUpperCase()
+    : "";
 
   return (
     <motion.header
@@ -34,44 +60,77 @@ export function Navbar() {
         aria-label="Primary"
         className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 lg:px-10"
       >
-        <a
-          href="#top"
-          className="group flex items-center gap-2.5"
-          aria-label="Astrology home"
-        >
+        <Link to="/" className="group flex items-center gap-2.5" aria-label="Astrology home">
           <span className="relative grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-primary via-accent to-primary shadow-[0_0_20px_oklch(0.75_0.19_55/0.4)] transition-transform duration-500 group-hover:rotate-[20deg]">
             <Sparkles className="h-5 w-5 text-white" strokeWidth={2.4} />
           </span>
           <span className="font-display text-3xl font-semibold tracking-tight text-foreground">
-  Astro<span className="gradient-gold">logy</span>
-</span>
-        </a>
+            Astro<span className="gradient-gold">logy</span>
+          </span>
+        </Link>
 
         <ul className="hidden items-center gap-1 lg:flex">
           {NAV_ITEMS.map((item) => (
             <li key={item.href} className="flex items-center">
               <Sparkles className="h-3.5 w-3.5 text-primary" fill="currentColor" strokeWidth={0} />
-              <a
-                href={item.href}
-                className="group flex items-center gap-1 rounded-full px-3 py-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-primary"
-              >
-                {item.label}
-                {item.hasDropdown && (
-                  <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
-                )}
-              </a>
+              {item.href.startsWith("/#") ? (
+                <a
+                  href={item.href}
+                  className="group flex items-center gap-1 rounded-full px-3 py-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-primary"
+                >
+                  {item.label}
+                  {item.hasDropdown && (
+                    <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
+                  )}
+                </a>
+              ) : (
+                <Link
+                  to={item.href}
+                  className="group flex items-center gap-1 rounded-full px-3 py-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-primary data-[status=active]:text-primary"
+                >
+                  {item.label}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <a
-            href="#login"
-            className="btn-gold inline-flex h-11 items-center gap-2 rounded-full px-5 text-sm"
-          >
-            <User className="h-4 w-4" strokeWidth={2.4} />
-            Account
-          </a>
+          {user ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  type="button"
+                  className="glass ring-gradient inline-flex h-11 items-center gap-2 rounded-full px-4 text-sm font-semibold text-foreground transition-transform hover:-translate-y-0.5"
+                >
+                  <span className="grid h-7 w-7 place-items-center rounded-full bg-gradient-to-br from-primary via-accent to-primary text-xs font-bold text-white">
+                    {initials}
+                  </span>
+                  {user.name.split(" ")[0]}
+                  <ChevronDown className="h-3.5 w-3.5" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-56">
+                <DropdownMenuLabel className="truncate">{user.email}</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem
+                  onClick={handleSignOut}
+                  className="cursor-pointer text-destructive focus:text-destructive"
+                >
+                  <LogOut className="h-4 w-4" />
+                  Log out
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <Link
+              to="/login"
+              className="btn-gold inline-flex h-11 items-center gap-2 rounded-full px-5 text-sm"
+            >
+              <User className="h-4 w-4" strokeWidth={2.4} />
+              Account
+            </Link>
+          )}
         </div>
 
         <button
@@ -92,28 +151,68 @@ export function Navbar() {
           className="lg:hidden"
         >
           <ul className="mx-6 mb-4 flex flex-col gap-1 rounded-2xl glass-strong p-3">
-            {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <a
-                  href={item.href}
+            {NAV_ITEMS.map((item) =>
+              item.href.startsWith("/#") ? (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-foreground hover:bg-primary/10 hover:text-primary"
+                  >
+                    <Sparkles
+                      className="h-3.5 w-3.5 text-primary"
+                      fill="currentColor"
+                      strokeWidth={0}
+                    />
+                    {item.label}
+                  </a>
+                </li>
+              ) : (
+                <li key={item.href}>
+                  <Link
+                    to={item.href}
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-foreground hover:bg-primary/10 hover:text-primary"
+                  >
+                    <Sparkles
+                      className="h-3.5 w-3.5 text-primary"
+                      fill="currentColor"
+                      strokeWidth={0}
+                    />
+                    {item.label}
+                  </Link>
+                </li>
+              ),
+            )}
+            {user ? (
+              <>
+                <li className="mt-2 rounded-xl bg-primary/5 px-4 py-3">
+                  <p className="text-sm font-semibold text-foreground">{user.name}</p>
+                  <p className="truncate text-xs text-muted-foreground">{user.email}</p>
+                </li>
+                <li>
+                  <button
+                    type="button"
+                    onClick={handleSignOut}
+                    className="flex w-full items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-destructive hover:bg-destructive/10"
+                  >
+                    <LogOut className="h-4 w-4" />
+                    Log out
+                  </button>
+                </li>
+              </>
+            ) : (
+              <li>
+                <Link
+                  to="/login"
                   onClick={() => setOpen(false)}
-                  className="flex items-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-foreground hover:bg-primary/10 hover:text-primary"
+                  className="btn-gold mt-2 flex h-11 items-center justify-center gap-2 rounded-full text-sm"
                 >
-                  <Sparkles className="h-3.5 w-3.5 text-primary" fill="currentColor" strokeWidth={0} />
-                  {item.label}
-                </a>
+                  <User className="h-4 w-4" />
+                  Account
+                </Link>
               </li>
-            ))}
-            <li>
-              <a
-                href="#login"
-                onClick={() => setOpen(false)}
-                className="btn-gold mt-2 flex h-11 items-center justify-center gap-2 rounded-full text-sm"
-              >
-                <User className="h-4 w-4" />
-                Account
-              </a>
-            </li>
+            )}
           </ul>
         </motion.div>
       )}
