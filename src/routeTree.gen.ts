@@ -11,7 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as BlogRouteImport } from './routes/blog'
+import { Route as ConsultationRouteImport } from './routes/consultation'
+import { Route as DoshasRouteImport } from './routes/doshas'
+import { Route as HoroscopesRouteImport } from './routes/horoscopes'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as MuhuratRouteImport } from './routes/muhurat'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SignupRouteImport } from './routes/signup'
 
@@ -25,9 +29,29 @@ const BlogRoute = BlogRouteImport.update({
   path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConsultationRoute = ConsultationRouteImport.update({
+  id: '/consultation',
+  path: '/consultation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DoshasRoute = DoshasRouteImport.update({
+  id: '/doshas',
+  path: '/doshas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HoroscopesRoute = HoroscopesRouteImport.update({
+  id: '/horoscopes',
+  path: '/horoscopes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MuhuratRoute = MuhuratRouteImport.update({
+  id: '/muhurat',
+  path: '/muhurat',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ShopRoute = ShopRouteImport.update({
@@ -44,14 +68,22 @@ const SignupRoute = SignupRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
+  '/consultation': typeof ConsultationRoute
+  '/doshas': typeof DoshasRoute
+  '/horoscopes': typeof HoroscopesRoute
   '/login': typeof LoginRoute
+  '/muhurat': typeof MuhuratRoute
   '/shop': typeof ShopRoute
   '/signup': typeof SignupRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
+  '/consultation': typeof ConsultationRoute
+  '/doshas': typeof DoshasRoute
+  '/horoscopes': typeof HoroscopesRoute
   '/login': typeof LoginRoute
+  '/muhurat': typeof MuhuratRoute
   '/shop': typeof ShopRoute
   '/signup': typeof SignupRoute
 }
@@ -59,22 +91,58 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/blog': typeof BlogRoute
+  '/consultation': typeof ConsultationRoute
+  '/doshas': typeof DoshasRoute
+  '/horoscopes': typeof HoroscopesRoute
   '/login': typeof LoginRoute
+  '/muhurat': typeof MuhuratRoute
   '/shop': typeof ShopRoute
   '/signup': typeof SignupRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/blog' | '/login' | '/shop' | '/signup'
+  fullPaths:
+    | '/'
+    | '/blog'
+    | '/consultation'
+    | '/doshas'
+    | '/horoscopes'
+    | '/login'
+    | '/muhurat'
+    | '/shop'
+    | '/signup'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/blog' | '/login' | '/shop' | '/signup'
-  id: '__root__' | '/' | '/blog' | '/login' | '/shop' | '/signup'
+  to:
+    | '/'
+    | '/blog'
+    | '/consultation'
+    | '/doshas'
+    | '/horoscopes'
+    | '/login'
+    | '/muhurat'
+    | '/shop'
+    | '/signup'
+  id:
+    | '__root__'
+    | '/'
+    | '/blog'
+    | '/consultation'
+    | '/doshas'
+    | '/horoscopes'
+    | '/login'
+    | '/muhurat'
+    | '/shop'
+    | '/signup'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BlogRoute: typeof BlogRoute
+  ConsultationRoute: typeof ConsultationRoute
+  DoshasRoute: typeof DoshasRoute
+  HoroscopesRoute: typeof HoroscopesRoute
   LoginRoute: typeof LoginRoute
+  MuhuratRoute: typeof MuhuratRoute
   ShopRoute: typeof ShopRoute
   SignupRoute: typeof SignupRoute
 }
@@ -95,11 +163,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/consultation': {
+      id: '/consultation'
+      path: '/consultation'
+      fullPath: '/consultation'
+      preLoaderRoute: typeof ConsultationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/doshas': {
+      id: '/doshas'
+      path: '/doshas'
+      fullPath: '/doshas'
+      preLoaderRoute: typeof DoshasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/horoscopes': {
+      id: '/horoscopes'
+      path: '/horoscopes'
+      fullPath: '/horoscopes'
+      preLoaderRoute: typeof HoroscopesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/muhurat': {
+      id: '/muhurat'
+      path: '/muhurat'
+      fullPath: '/muhurat'
+      preLoaderRoute: typeof MuhuratRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/shop': {
@@ -122,7 +218,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BlogRoute: BlogRoute,
+  ConsultationRoute: ConsultationRoute,
+  DoshasRoute: DoshasRoute,
+  HoroscopesRoute: HoroscopesRoute,
   LoginRoute: LoginRoute,
+  MuhuratRoute: MuhuratRoute,
   ShopRoute: ShopRoute,
   SignupRoute: SignupRoute,
 }

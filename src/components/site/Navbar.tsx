@@ -13,10 +13,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const NAV_ITEMS = [
-  { label: "Horoscopes", href: "/#horoscope", hasDropdown: true },
-  { label: "Consultation", href: "/#astrologers", hasDropdown: true },
-  { label: "Doshas", href: "/#services", hasDropdown: true },
-  { label: "Muhurat", href: "/#kundli", hasDropdown: true },
+  { label: "Horoscopes", href: "/horoscopes" },
+  { label: "Consultation", href: "/consultation" },
+  { label: "Doshas", href: "/doshas" },
+  { label: "Muhurat", href: "/muhurat" },
   { label: "Shop", href: "/shop" },
   { label: "Blogs", href: "/blog" },
 ];
