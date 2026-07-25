@@ -34,7 +34,7 @@ export function Footer() {
                 <Sparkles className="h-5 w-5 text-white" strokeWidth={2.2} />
               </span>
               <span className="font-display text-2xl font-medium tracking-tight">
-                Astra<span className="gradient-gold">luna</span>
+                Astro<span className="gradient-gold">logy</span>
               </span>
             </a>
             <p className="mt-5 max-w-sm text-sm text-muted-foreground">
