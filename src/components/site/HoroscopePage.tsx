@@ -22,7 +22,7 @@ const SIGNS: {
   {
     name: "Aries",
     dates: "Mar 21 – Apr 19",
-    glyph: "♈",
+    glyph: "ARI",
     element: "fire",
     ruler: "Mars",
     blurb:
@@ -31,7 +31,7 @@ const SIGNS: {
   {
     name: "Taurus",
     dates: "Apr 20 – May 20",
-    glyph: "♉",
+    glyph: "TAU",
     element: "earth",
     ruler: "Venus",
     blurb:
@@ -40,7 +40,7 @@ const SIGNS: {
   {
     name: "Gemini",
     dates: "May 21 – Jun 20",
-    glyph: "♊",
+    glyph: "GEM",
     element: "air",
     ruler: "Mercury",
     blurb:
@@ -49,7 +49,7 @@ const SIGNS: {
   {
     name: "Cancer",
     dates: "Jun 21 – Jul 22",
-    glyph: "♋",
+    glyph: "CAN",
     element: "water",
     ruler: "Moon",
     blurb:
@@ -58,7 +58,7 @@ const SIGNS: {
   {
     name: "Leo",
     dates: "Jul 23 – Aug 22",
-    glyph: "♌",
+    glyph: "LEO",
     element: "fire",
     ruler: "Sun",
     blurb:
@@ -67,7 +67,7 @@ const SIGNS: {
   {
     name: "Virgo",
     dates: "Aug 23 – Sep 22",
-    glyph: "♍",
+    glyph: "VIR",
     element: "earth",
     ruler: "Mercury",
     blurb:
@@ -76,7 +76,7 @@ const SIGNS: {
   {
     name: "Libra",
     dates: "Sep 23 – Oct 22",
-    glyph: "♎",
+    glyph: "LIB",
     element: "air",
     ruler: "Venus",
     blurb:
@@ -85,7 +85,7 @@ const SIGNS: {
   {
     name: "Scorpio",
     dates: "Oct 23 – Nov 21",
-    glyph: "♏",
+    glyph: "SCO",
     element: "water",
     ruler: "Mars & Ketu",
     blurb:
@@ -94,7 +94,7 @@ const SIGNS: {
   {
     name: "Sagittarius",
     dates: "Nov 22 – Dec 21",
-    glyph: "♐",
+    glyph: "SAG",
     element: "fire",
     ruler: "Jupiter",
     blurb:
@@ -103,7 +103,7 @@ const SIGNS: {
   {
     name: "Capricorn",
     dates: "Dec 22 – Jan 19",
-    glyph: "♑",
+    glyph: "CAP",
     element: "earth",
     ruler: "Saturn",
     blurb:
@@ -112,7 +112,7 @@ const SIGNS: {
   {
     name: "Aquarius",
     dates: "Jan 20 – Feb 18",
-    glyph: "♒",
+    glyph: "AQU",
     element: "air",
     ruler: "Saturn & Rahu",
     blurb:
@@ -121,7 +121,7 @@ const SIGNS: {
   {
     name: "Pisces",
     dates: "Feb 19 – Mar 20",
-    glyph: "♓",
+    glyph: "PIS",
     element: "water",
     ruler: "Jupiter",
     blurb:
@@ -183,7 +183,7 @@ export function HoroscopePage() {
             whileInView="show"
             viewport={{ once: true, margin: "-80px" }}
             variants={{ hidden: {}, show: { transition: { staggerChildren: 0.04 } } }}
-            className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4"
+            className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4"
           >
             {SIGNS.map((sign) => {
               const Icon = ELEMENT_ICON[sign.element];
@@ -192,29 +192,31 @@ export function HoroscopePage() {
                 <motion.li
                   key={sign.name}
                   variants={{ hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } }}
-                  className={isActive ? "sm:col-span-2 lg:col-span-2" : ""}
+                  className={isActive ? "col-span-2 sm:col-span-2 lg:col-span-2" : ""}
                 >
                   <button
                     type="button"
                     onClick={() => setActive(isActive ? null : sign.name)}
-                    className="card-lift ring-gradient group relative block w-full overflow-hidden rounded-3xl glass p-5 text-left"
+                    className="card-lift ring-gradient group relative block w-full overflow-hidden rounded-2xl glass p-4 text-left sm:rounded-3xl sm:p-5"
                   >
                     <div
                       aria-hidden
                       className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${ELEMENT_TINT[sign.element]} opacity-0 transition-opacity duration-500 group-hover:opacity-100 ${isActive ? "opacity-100" : ""}`}
                     />
                     <div className="relative">
-                      <div className="flex items-center justify-between">
-                        <span className="font-display text-4xl leading-none gradient-gold">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="inline-flex h-9 items-center rounded-xl bg-gradient-to-br from-primary/80 to-accent/80 px-2.5 font-display text-sm font-bold tracking-wide text-white shadow-glow sm:text-base">
                           {sign.glyph}
                         </span>
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-2.5 py-1 text-[10px] uppercase tracking-widest text-muted-foreground">
-                          <Icon className="h-3 w-3" />
-                          {sign.element}
+                        <span className="inline-flex items-center gap-1 rounded-full bg-primary/10 px-2 py-1 text-[9px] uppercase tracking-widest text-muted-foreground sm:gap-1.5 sm:px-2.5 sm:text-[10px]">
+                          <Icon className="h-3 w-3 shrink-0" />
+                          <span className="hidden sm:inline">{sign.element}</span>
                         </span>
                       </div>
-                      <div className="mt-4 font-display text-lg text-foreground">{sign.name}</div>
-                      <div className="mt-1 text-[11px] uppercase tracking-wider text-muted-foreground">
+                      <div className="mt-3 font-display text-base text-foreground sm:mt-4 sm:text-lg">
+                        {sign.name}
+                      </div>
+                      <div className="mt-1 text-[10px] uppercase tracking-wider text-muted-foreground sm:text-[11px]">
                         {sign.dates} · Ruled by {sign.ruler}
                       </div>
                       {isActive && (
