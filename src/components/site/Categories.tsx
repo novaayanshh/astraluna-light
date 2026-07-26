@@ -13,18 +13,18 @@ const SIGNS: {
   glyph: string;
   element: "fire" | "earth" | "air" | "water";
 }[] = [
-  { name: "Aries", dates: "Mar 21 – Apr 19", glyph: "♈", element: "fire" },
-  { name: "Taurus", dates: "Apr 20 – May 20", glyph: "♉", element: "earth" },
-  { name: "Gemini", dates: "May 21 – Jun 20", glyph: "♊", element: "air" },
-  { name: "Cancer", dates: "Jun 21 – Jul 22", glyph: "♋", element: "water" },
-  { name: "Leo", dates: "Jul 23 – Aug 22", glyph: "♌", element: "fire" },
-  { name: "Virgo", dates: "Aug 23 – Sep 22", glyph: "♍", element: "earth" },
-  { name: "Libra", dates: "Sep 23 – Oct 22", glyph: "♎", element: "air" },
-  { name: "Scorpio", dates: "Oct 23 – Nov 21", glyph: "♏", element: "water" },
-  { name: "Sagittarius", dates: "Nov 22 – Dec 21", glyph: "♐", element: "fire" },
-  { name: "Capricorn", dates: "Dec 22 – Jan 19", glyph: "♑", element: "earth" },
-  { name: "Aquarius", dates: "Jan 20 – Feb 18", glyph: "♒", element: "air" },
-  { name: "Pisces", dates: "Feb 19 – Mar 20", glyph: "♓", element: "water" },
+  { name: "Aries", dates: "Mar 21 – Apr 19", glyph: "ARI", element: "fire" },
+  { name: "Taurus", dates: "Apr 20 – May 20", glyph: "TAU", element: "earth" },
+  { name: "Gemini", dates: "May 21 – Jun 20", glyph: "GEM", element: "air" },
+  { name: "Cancer", dates: "Jun 21 – Jul 22", glyph: "CAN", element: "water" },
+  { name: "Leo", dates: "Jul 23 – Aug 22", glyph: "LEO", element: "fire" },
+  { name: "Virgo", dates: "Aug 23 – Sep 22", glyph: "VIR", element: "earth" },
+  { name: "Libra", dates: "Sep 23 – Oct 22", glyph: "LIB", element: "air" },
+  { name: "Scorpio", dates: "Oct 23 – Nov 21", glyph: "SCO", element: "water" },
+  { name: "Sagittarius", dates: "Nov 22 – Dec 21", glyph: "SAG", element: "fire" },
+  { name: "Capricorn", dates: "Dec 22 – Jan 19", glyph: "CAP", element: "earth" },
+  { name: "Aquarius", dates: "Jan 20 – Feb 18", glyph: "AQU", element: "air" },
+  { name: "Pisces", dates: "Feb 19 – Mar 20", glyph: "PIS", element: "water" },
 ];
 
 const ELEMENT_ICON: Record<string, LucideIcon> = {
@@ -59,7 +59,7 @@ export function Categories() {
             hidden: {},
             show: { transition: { staggerChildren: 0.04 } },
           }}
-          className="mt-16 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6"
+          className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6"
         >
           {SIGNS.map((sign) => {
             const Icon = ELEMENT_ICON[sign.element];
@@ -79,7 +79,7 @@ export function Categories() {
                     className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${ELEMENT_TINT[sign.element]} opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
                   />
                   <div className="relative">
-                    <div className="font-display text-5xl leading-none gradient-gold transition-transform duration-500 group-hover:scale-110">
+                    <div className="mx-auto inline-flex h-11 items-center rounded-xl bg-gradient-to-br from-primary/80 to-accent/80 px-3 font-display text-base font-bold tracking-wide text-white shadow-glow transition-transform duration-500 group-hover:scale-110">
                       {sign.glyph}
                     </div>
                     <div className="mt-4 font-display text-lg text-foreground">
