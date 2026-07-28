@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "sonner";
-import { Navbar } from "@/components/site/Navbar";
 import { Hero } from "@/components/site/Hero";
 import { Categories } from "@/components/site/Categories";
 import { Astrologers } from "@/components/site/Astrologers";
@@ -19,7 +18,6 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <div className="relative min-h-dvh overflow-hidden">
-      <Navbar />
       <main>
         <Hero />
         <Categories />

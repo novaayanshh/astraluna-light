@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "sonner";
-import { Navbar } from "@/components/site/Navbar";
 import { Login } from "@/components/site/Login";
 import { Footer } from "@/components/site/Footer";
 
@@ -14,7 +13,6 @@ export const Route = createFileRoute("/login")({
 function LoginPage() {
   return (
     <div className="relative min-h-dvh overflow-hidden">
-      <Navbar />
       <main>
         <Login />
       </main>

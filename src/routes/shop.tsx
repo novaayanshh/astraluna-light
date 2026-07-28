@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "sonner";
-import { Navbar } from "@/components/site/Navbar";
 import { Shop } from "@/components/site/Shop";
 import { Footer } from "@/components/site/Footer";
 
@@ -21,7 +20,6 @@ export const Route = createFileRoute("/shop")({
 function ShopPage() {
   return (
     <div className="relative min-h-dvh overflow-hidden">
-      <Navbar />
       <main>
         <Shop />
       </main>

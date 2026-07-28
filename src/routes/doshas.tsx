@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "sonner";
-import { Navbar } from "@/components/site/Navbar";
 import { DoshaPage } from "@/components/site/DoshaPage";
 import { Footer } from "@/components/site/Footer";
 
@@ -21,7 +20,6 @@ export const Route = createFileRoute("/doshas")({
 function DoshasRoute() {
   return (
     <div className="relative min-h-dvh overflow-hidden">
-      <Navbar />
       <main>
         <DoshaPage />
       </main>
