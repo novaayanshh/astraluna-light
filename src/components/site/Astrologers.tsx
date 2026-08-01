@@ -12,6 +12,7 @@ export function Astrologers() {
           eyebrow="AI Astrologers"
           title="AI Astrologers"
           description="Connect with our expert AI astrologers for guidance"
+          plain
         />
 
         <motion.ul
@@ -37,28 +38,28 @@ export function Astrologers() {
               <Link
                 to="/astrologers/$slug"
                 params={{ slug: a.slug }}
-                className="ring-gradient group relative flex items-center gap-4 overflow-hidden rounded-2xl glass p-4 shadow-sm transition-shadow hover:shadow-[0_16px_40px_-16px_oklch(0.5_0.08_60/0.35)]"
+                className="group relative flex items-center gap-4 overflow-hidden rounded-2xl border border-primary/30 bg-white p-4 shadow-sm transition-shadow hover:shadow-[0_16px_40px_-16px_oklch(0.5_0.08_60/0.35)]"
               >
-                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full ring-2 ring-primary/30">
+                <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full ring-2 ring-primary/50">
                   <img
                     src={a.image}
                     alt={`Portrait of ${a.name}`}
                     loading="lazy"
-                    width={128}
-                    height={128}
+                    width={160}
+                    height={160}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                   />
                 </div>
 
                 <div className="min-w-0 flex-1">
-                  <h3 className="truncate font-display text-base text-foreground">{a.name}</h3>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{a.tag}</p>
-                  <p className="mt-1 truncate text-xs text-muted-foreground">
-                    Expertise: <span className="font-medium text-primary">{a.expertise}</span>
+                  <h3 className="truncate font-sans text-lg font-semibold text-foreground">{a.name}</h3>
+                  <p className="mt-0.5 text-sm text-muted-foreground">{a.tag}</p>
+                  <p className="mt-1 truncate text-sm text-muted-foreground">
+                    Expertise: <span className="font-semibold text-primary">{a.expertise}</span>
                   </p>
-                  <p className="mt-1.5 font-display text-sm gradient-gold">
+                  <p className="mt-1.5 font-sans text-base font-semibold gradient-gold">
                     ₹{a.rate.toFixed(2)}
-                    <span className="text-[10px] text-muted-foreground">/msg</span>
+                    <span className="text-[11px] font-normal text-muted-foreground">/msg</span>
                   </p>
                 </div>
 
