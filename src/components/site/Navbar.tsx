@@ -20,7 +20,14 @@ const NAV_ITEMS = [
       { label: "Monthly Horoscope", href: "/horoscopes?period=Monthly" },
     ],
   },
-  { label: "Consultation", href: "/consultation" },
+  {
+    label: "Consultation",
+    href: "/consultation",
+    dropdown: [
+      { label: "Chat with Astrologer", href: "/consultation" },
+      { label: "AI Astrologers", href: "/astrologers" },
+    ],
+  },
   {
     label: "Doshas",
     href: "/doshas",
@@ -36,7 +43,19 @@ const NAV_ITEMS = [
       { label: "Rahu Dosh", href: "/doshas#rahu-dosh" },
     ],
   },
-  { label: "Muhurat", href: "/muhurat" },
+  {
+    label: "Muhurat",
+    href: "/muhurat",
+    dropdown: [
+      { label: "Annaprashan Muhurat", href: "/muhurat/annaprashan-muhurat" },
+      { label: "Namkaran Muhurat", href: "/muhurat/namkaran-muhurat" },
+      { label: "Car / Bike Muhurat", href: "/muhurat/car-bike-muhurat" },
+      { label: "Marriage Muhurat", href: "/muhurat/marriage-muhurat" },
+      { label: "Bhoomi Pujan Muhurat", href: "/muhurat/bhoomi-pujan-muhurat" },
+      { label: "Griha Pravesh Muhurat", href: "/muhurat/griha-pravesh-muhurat" },
+      { label: "Mundan Muhurat", href: "/muhurat/mundan-muhurat" },
+    ],
+  },
   { label: "Shop", href: "/shop" },
   { label: "Blogs", href: "/blog" },
 ] as const;
@@ -93,11 +112,12 @@ export function Navbar() {
           {NAV_ITEMS.map((item) => {
             const hasDropdown = "dropdown" in item && item.dropdown;
             return (
-              <li
-                key={item.href}
-                className="group/nav relative flex items-center"
-              >
-                <Sparkles className="h-3.5 w-3.5 text-primary" fill="currentColor" strokeWidth={0} />
+              <li key={item.href} className="group/nav relative flex items-center">
+                <Sparkles
+                  className="h-3.5 w-3.5 text-primary"
+                  fill="currentColor"
+                  strokeWidth={0}
+                />
                 <Link
                   to={item.href}
                   className="group flex items-center gap-1 rounded-full px-3 py-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-primary data-[status=active]:text-primary"
@@ -109,16 +129,18 @@ export function Navbar() {
                 </Link>
 
                 {hasDropdown && (
-                  <div
-                    className="invisible absolute left-0 top-full z-50 min-w-[200px] translate-y-1 rounded-2xl glass-strong p-2 opacity-0 shadow-[0_12px_40px_-12px_oklch(0.4_0.05_60/0.35)] transition-all duration-200 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:opacity-100"
-                  >
+                  <div className="invisible absolute left-0 top-full z-50 min-w-[200px] translate-y-1 rounded-2xl glass-strong p-2 opacity-0 shadow-[0_12px_40px_-12px_oklch(0.4_0.05_60/0.35)] transition-all duration-200 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:opacity-100">
                     {item.dropdown.map((sub) => (
                       <a
                         key={sub.href}
                         href={sub.href}
                         className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-semibold text-foreground/80 transition-colors hover:bg-primary/10 hover:text-primary"
                       >
-                        <Sparkles className="h-3.5 w-3.5 text-primary" fill="currentColor" strokeWidth={0} />
+                        <Sparkles
+                          className="h-3.5 w-3.5 text-primary"
+                          fill="currentColor"
+                          strokeWidth={0}
+                        />
                         {sub.label}
                       </a>
                     ))}

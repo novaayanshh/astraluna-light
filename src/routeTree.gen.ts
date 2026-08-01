@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AstrologersRouteImport } from './routes/astrologers'
 import { Route as BlogRouteImport } from './routes/blog'
 import { Route as ConsultationRouteImport } from './routes/consultation'
 import { Route as DoshasRouteImport } from './routes/doshas'
@@ -19,10 +20,16 @@ import { Route as MuhuratRouteImport } from './routes/muhurat'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SignupRouteImport } from './routes/signup'
 import { Route as AstrologersSlugRouteImport } from './routes/Astrologers/$slug'
+import { Route as MuhuratSlugRouteImport } from './routes/muhurat.$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AstrologersRoute = AstrologersRouteImport.update({
+  id: '/astrologers',
+  path: '/astrologers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const BlogRoute = BlogRouteImport.update({
@@ -70,48 +77,60 @@ const AstrologersSlugRoute = AstrologersSlugRouteImport.update({
   path: '/Astrologers/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MuhuratSlugRoute = MuhuratSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => MuhuratRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/astrologers': typeof AstrologersRoute
   '/blog': typeof BlogRoute
   '/consultation': typeof ConsultationRoute
   '/doshas': typeof DoshasRoute
   '/horoscopes': typeof HoroscopesRoute
   '/login': typeof LoginRoute
-  '/muhurat': typeof MuhuratRoute
+  '/muhurat': typeof MuhuratRouteWithChildren
   '/shop': typeof ShopRoute
   '/signup': typeof SignupRoute
   '/Astrologers/$slug': typeof AstrologersSlugRoute
+  '/muhurat/$slug': typeof MuhuratSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/astrologers': typeof AstrologersRoute
   '/blog': typeof BlogRoute
   '/consultation': typeof ConsultationRoute
   '/doshas': typeof DoshasRoute
   '/horoscopes': typeof HoroscopesRoute
   '/login': typeof LoginRoute
-  '/muhurat': typeof MuhuratRoute
+  '/muhurat': typeof MuhuratRouteWithChildren
   '/shop': typeof ShopRoute
   '/signup': typeof SignupRoute
   '/Astrologers/$slug': typeof AstrologersSlugRoute
+  '/muhurat/$slug': typeof MuhuratSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/astrologers': typeof AstrologersRoute
   '/blog': typeof BlogRoute
   '/consultation': typeof ConsultationRoute
   '/doshas': typeof DoshasRoute
   '/horoscopes': typeof HoroscopesRoute
   '/login': typeof LoginRoute
-  '/muhurat': typeof MuhuratRoute
+  '/muhurat': typeof MuhuratRouteWithChildren
   '/shop': typeof ShopRoute
   '/signup': typeof SignupRoute
   '/Astrologers/$slug': typeof AstrologersSlugRoute
+  '/muhurat/$slug': typeof MuhuratSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/astrologers'
     | '/blog'
     | '/consultation'
     | '/doshas'
@@ -121,9 +140,11 @@ export interface FileRouteTypes {
     | '/shop'
     | '/signup'
     | '/Astrologers/$slug'
+    | '/muhurat/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/astrologers'
     | '/blog'
     | '/consultation'
     | '/doshas'
@@ -133,9 +154,11 @@ export interface FileRouteTypes {
     | '/shop'
     | '/signup'
     | '/Astrologers/$slug'
+    | '/muhurat/$slug'
   id:
     | '__root__'
     | '/'
+    | '/astrologers'
     | '/blog'
     | '/consultation'
     | '/doshas'
@@ -145,16 +168,18 @@ export interface FileRouteTypes {
     | '/shop'
     | '/signup'
     | '/Astrologers/$slug'
+    | '/muhurat/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AstrologersRoute: typeof AstrologersRoute
   BlogRoute: typeof BlogRoute
   ConsultationRoute: typeof ConsultationRoute
   DoshasRoute: typeof DoshasRoute
   HoroscopesRoute: typeof HoroscopesRoute
   LoginRoute: typeof LoginRoute
-  MuhuratRoute: typeof MuhuratRoute
+  MuhuratRoute: typeof MuhuratRouteWithChildren
   ShopRoute: typeof ShopRoute
   SignupRoute: typeof SignupRoute
   AstrologersSlugRoute: typeof AstrologersSlugRoute
@@ -167,6 +192,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/astrologers': {
+      id: '/astrologers'
+      path: '/astrologers'
+      fullPath: '/astrologers'
+      preLoaderRoute: typeof AstrologersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/blog': {
@@ -232,17 +264,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AstrologersSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/muhurat/$slug': {
+      id: '/muhurat/$slug'
+      path: '/$slug'
+      fullPath: '/muhurat/$slug'
+      preLoaderRoute: typeof MuhuratSlugRouteImport
+      parentRoute: typeof MuhuratRoute
+    }
   }
 }
 
+interface MuhuratRouteChildren {
+  MuhuratSlugRoute: typeof MuhuratSlugRoute
+}
+
+const MuhuratRouteChildren: MuhuratRouteChildren = {
+  MuhuratSlugRoute: MuhuratSlugRoute,
+}
+
+const MuhuratRouteWithChildren =
+  MuhuratRoute._addFileChildren(MuhuratRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AstrologersRoute: AstrologersRoute,
   BlogRoute: BlogRoute,
   ConsultationRoute: ConsultationRoute,
   DoshasRoute: DoshasRoute,
   HoroscopesRoute: HoroscopesRoute,
   LoginRoute: LoginRoute,
-  MuhuratRoute: MuhuratRoute,
+  MuhuratRoute: MuhuratRouteWithChildren,
   ShopRoute: ShopRoute,
   SignupRoute: SignupRoute,
   AstrologersSlugRoute: AstrologersSlugRoute,

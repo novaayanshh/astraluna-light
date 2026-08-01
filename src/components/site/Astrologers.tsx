@@ -13,12 +13,12 @@ const ROW_BOTTOM = AI_ASTROLOGERS.slice(HALF);
 const LOOP_TOP = [...ROW_TOP, ...ROW_TOP];
 const LOOP_BOTTOM = [...ROW_BOTTOM, ...ROW_BOTTOM];
 
-function AstrologerCard({ a }: { a: Astrologer }) {
+export function AstrologerCard({ a }: { a: Astrologer }) {
   return (
     <Link
       to="/astrologers/$slug"
       params={{ slug: a.slug }}
-      className="group relative flex w-[280px] shrink-0 items-center gap-4 overflow-hidden rounded-2xl border border-primary/30 bg-white p-4 shadow-sm transition-shadow hover:shadow-[0_16px_40px_-16px_oklch(0.5_0.08_60/0.35)]"
+      className="group relative flex w-full items-center gap-4 overflow-hidden rounded-2xl border border-primary/30 bg-white p-4 shadow-sm transition-shadow hover:shadow-[0_16px_40px_-16px_oklch(0.5_0.08_60/0.35)]"
     >
       <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-full ring-2 ring-primary/50">
         <img
@@ -52,13 +52,7 @@ function AstrologerCard({ a }: { a: Astrologer }) {
   );
 }
 
-function MarqueeRow({
-  items,
-  direction,
-}: {
-  items: Astrologer[];
-  direction: "rtl" | "ltr";
-}) {
+function MarqueeRow({ items, direction }: { items: Astrologer[]; direction: "rtl" | "ltr" }) {
   const [paused, setPaused] = useState(false);
 
   return (
@@ -72,7 +66,7 @@ function MarqueeRow({
       } ${paused ? "marquee-paused" : ""}`}
     >
       {items.map((a, i) => (
-        <li key={`${a.slug}-${i}`}>
+        <li key={`${a.slug}-${i}`} className="w-[280px] shrink-0">
           <AstrologerCard a={a} />
         </li>
       ))}
