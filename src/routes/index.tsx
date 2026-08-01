@@ -7,6 +7,7 @@ import { Astrologers } from "@/components/site/Astrologers";
 import { Process } from "@/components/site/Process";
 import { Kundli } from "@/components/site/Kundli";
 import { Services } from "@/components/site/Services";
+import { Stats } from "@/components/site/Stats";
 import { Testimonials } from "@/components/site/Testimonials";
 import { FAQ } from "@/components/site/FAQ";
 import { CTA } from "@/components/site/CTA";
@@ -27,6 +28,7 @@ function Home() {
         <Process />
         <Kundli />
         <Services />
+        <Stats />
         <Testimonials />
         <FAQ />
         <CTA />

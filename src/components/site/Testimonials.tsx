@@ -62,9 +62,10 @@ export function Testimonials() {
     <section id="testimonials" className="relative py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading
-          eyebrow="Loved by seekers"
-          title="Stories written in the stars"
-          description="Real words from real people whose lives have shifted through a single consultation."
+          title="Testimonials"
+          description="Hear from our satisfied clients about their experiences with our expert astrologers and the positive impact on their lives."
+          align="left"
+          plain
         />
 
         <div className="mt-16">

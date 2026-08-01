@@ -122,11 +122,13 @@ export function SectionHeading({
   title,
   description,
   align = "center",
+  plain = false,
 }: {
   eyebrow?: string;
   title: string;
   description?: string;
   align?: "center" | "left";
+  plain?: boolean;
 }) {
   return (
     <motion.div
@@ -134,7 +136,7 @@ export function SectionHeading({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`mx-auto max-w-3xl ${align === "center" ? "text-center" : "text-left"}`}
+      className={`${align === "center" ? "mx-auto max-w-3xl text-center" : "max-w-3xl text-left"}`}
     >
       {eyebrow && (
         <span className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-gold-soft">
@@ -143,10 +145,16 @@ export function SectionHeading({
         </span>
       )}
       <h2 className="mt-5 text-balance text-4xl font-medium leading-tight tracking-tight sm:text-5xl lg:text-6xl">
-        <span className="gradient-text">{title}</span>
+        {plain ? (
+          <span className="font-bold text-foreground">{title}</span>
+        ) : (
+          <span className="gradient-text">{title}</span>
+        )}
       </h2>
       {description && (
-        <p className="mx-auto mt-5 max-w-2xl text-balance text-base text-muted-foreground sm:text-lg">
+        <p
+          className={`mt-5 max-w-2xl text-balance text-base text-muted-foreground sm:text-lg ${align === "center" ? "mx-auto" : ""}`}
+        >
           {description}
         </p>
       )}
