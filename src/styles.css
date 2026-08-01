@@ -43,8 +43,8 @@
 :root {
   --radius: 1rem;
 
-  /* Warm cream light theme */
-  --background: oklch(0.985 0.03 90);
+  /* Clean white light theme */
+  --background: oklch(0.995 0.005 90);
   --foreground: oklch(0.22 0.03 60);
 
   --card: oklch(1 0 0);
@@ -56,10 +56,10 @@
   --primary: oklch(0.72 0.19 55);
   --primary-foreground: oklch(1 0 0);
 
-  --secondary: oklch(0.95 0.05 85);
+  --secondary: oklch(0.98 0.015 85);
   --secondary-foreground: oklch(0.3 0.05 55);
 
-  --muted: oklch(0.95 0.03 85);
+  --muted: oklch(0.97 0.01 85);
   --muted-foreground: oklch(0.5 0.04 60);
 
   --accent: oklch(0.78 0.17 70);
@@ -81,10 +81,10 @@
   /* Gradients & shadows */
   --gradient-cosmic: radial-gradient(
       ellipse at top,
-      oklch(0.95 0.09 85 / 0.7),
+      oklch(0.98 0.02 85 / 0.5),
       transparent 60%
     ),
-    linear-gradient(180deg, oklch(0.99 0.03 90), oklch(0.97 0.05 85));
+    linear-gradient(180deg, oklch(1 0 0), oklch(0.99 0.01 88));
   --gradient-gold: linear-gradient(
     135deg,
     oklch(0.82 0.16 78),
