@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-
+m
 const NAV_ITEMS = [
   {
     label: "Horoscopes",
@@ -71,7 +71,7 @@ export function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed inset-x-0 top-11 z-50 transition-all duration-500 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
         scrolled
           ? "border-b border-border/60 bg-background/85 backdrop-blur-xl shadow-[0_4px_24px_-12px_oklch(0.7_0.2_55/0.25)]"
           : "bg-transparent"
