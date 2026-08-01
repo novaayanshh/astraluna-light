@@ -79,17 +79,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Astrology — Premium Vedic Astrology & Kundli Consultations" },
+      { title: "Astrotring — Premium Vedic Astrology & Kundli Consultations" },
       {
         name: "description",
         content:
           "Consult India's most trusted Vedic astrologers, unlock personalised Kundli insights, and navigate love, career and destiny with celestial clarity.",
       },
-      { name: "author", content: "Astrology" },
+      { name: "author", content: "Astrotring" },
       { name: "theme-color", content: "#0e0a1f" },
       {
         property: "og:title",
-        content: "Astrology — Premium Vedic Astrology",
+        content: "Astrotring — Premium Vedic Astrology",
       },
       {
         property: "og:description",

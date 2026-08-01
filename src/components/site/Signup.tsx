@@ -33,7 +33,7 @@ export function Signup() {
     setSubmitting(true);
     try {
       await signUp(name, email, password);
-      toast.success("Account created — welcome to Astrology!");
+      toast.success("Account created — welcome to Astrotring!");
       navigate({ to: "/" });
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Something went wrong.");
@@ -56,7 +56,7 @@ export function Signup() {
           </span>
           <h1 className="mt-5 font-display text-3xl text-foreground">Create your account</h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            Join Astrology for personalised readings, orders and more.
+            Join Astrotring for personalised readings, orders and more.
           </p>
         </div>
 

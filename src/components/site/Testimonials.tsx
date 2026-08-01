@@ -33,7 +33,7 @@ const REVIEWS = [
     name: "Elena Petrova",
     role: "Berlin, DE",
     rating: 5,
-    body: "Booked a Vedic session on a whim; ended up with a life roadmap. Astrology sets the gold standard.",
+    body: "Booked a Vedic session on a whim; ended up with a life roadmap. Astrotring sets the gold standard.",
   },
 ];
 

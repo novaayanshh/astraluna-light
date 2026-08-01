@@ -22,7 +22,21 @@ const NAV_ITEMS = [
     ],
   },
   { label: "Consultation", href: "/consultation" },
-  { label: "Doshas", href: "/doshas" },
+  {
+    label: "Doshas",
+    href: "/doshas",
+    dropdown: [
+      { label: "Mangal Dosh (Manglik Dosh)", href: "/doshas#mangal-dosh" },
+      { label: "Kaal Sarp Dosh", href: "/doshas#kaal-sarp-dosh" },
+      { label: "Chandra Dosh", href: "/doshas#chandra-dosh" },
+      { label: "Pitra Dosh", href: "/doshas#pitra-dosh" },
+      { label: "Shani Dosh", href: "/doshas#shani-dosh" },
+      { label: "Guru Chandal Dosh", href: "/doshas#guru-chandal-dosh" },
+      { label: "Grahan Dosh (Eclipse Dosh)", href: "/doshas#grahan-dosh" },
+      { label: "Ketu Dosh", href: "/doshas#ketu-dosh" },
+      { label: "Rahu Dosh", href: "/doshas#rahu-dosh" },
+    ],
+  },
   { label: "Muhurat", href: "/muhurat" },
   { label: "Shop", href: "/shop" },
   { label: "Blogs", href: "/blog" },
@@ -67,12 +81,12 @@ export function Navbar() {
         aria-label="Primary"
         className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-6 py-4 lg:px-10"
       >
-        <Link to="/" className="group flex items-center gap-2.5" aria-label="Astrology home">
+        <Link to="/" className="group flex items-center gap-2.5" aria-label="Astrotring home">
           <span className="relative grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-primary via-accent to-primary shadow-[0_0_20px_oklch(0.75_0.19_55/0.4)] transition-transform duration-500 group-hover:rotate-[20deg]">
             <Sparkles className="h-5 w-5 text-white" strokeWidth={2.4} />
           </span>
           <span className="font-display text-3xl font-semibold tracking-tight text-foreground">
-            Astro<span className="gradient-gold">logy</span>
+            Astro<span className="gradient-gold">tring</span>
           </span>
         </Link>
 

@@ -10,42 +10,69 @@ import {
 } from "lucide-react";
 import { SectionHeading } from "./Categories";
 
-const DOSHAS: { title: string; body: string; remedy: string; icon: LucideIcon }[] = [
+const DOSHAS: { id: string; title: string; body: string; remedy: string; icon: LucideIcon }[] = [
   {
-    title: "Manglik Dosha",
+    id: "mangal-dosh",
+    title: "Mangal Dosh (Manglik Dosh)",
     body: "Occurs when Mars sits in specific houses of the birth chart, and is traditionally examined before marriage matching.",
     remedy: "Often addressed through Kumbh Vivah rituals, Hanuman worship, or matching with another Manglik chart.",
     icon: Flame,
   },
   {
-    title: "Kaal Sarp Dosha",
+    id: "kaal-sarp-dosh",
+    title: "Kaal Sarp Dosh",
     body: "Forms when all seven classical planets fall between Rahu and Ketu, said to create recurring obstacles and delays.",
     remedy: "Commonly pacified with Rahu-Ketu remedies, specific mantras, and worship at Trimbakeshwar or similar temples.",
     icon: Waves,
   },
   {
-    title: "Pitra Dosha",
+    id: "chandra-dosh",
+    title: "Chandra Dosh",
+    body: "Arises when the Moon is afflicted by malefic planets, often linked to emotional instability, anxiety and a restless mind.",
+    remedy: "Eased with Moon-strengthening remedies — Somvar fasting, pearl gemstone guidance, and Chandra mantra japa.",
+    icon: Moon,
+  },
+  {
+    id: "pitra-dosh",
+    title: "Pitra Dosh",
     body: "Linked to unresolved ancestral karma, often associated with the Sun or Saturn's placement relative to Rahu.",
     remedy: "Typically eased through Pitru Paksha rituals, Tarpan, and offerings to ancestors on relevant tithis.",
     icon: Users,
   },
   {
-    title: "Shani Sade Sati",
-    body: "The seven-and-a-half-year transit of Saturn around the natal Moon sign, known for testing patience and resilience.",
+    id: "shani-dosh",
+    title: "Shani Dosh",
+    body: "Covers Sade Sati and Dhaiya — Saturn's transit phases around the natal Moon, known for testing patience and resilience.",
     remedy: "Managed with Shani worship, discipline in daily routine, and specific gemstone or mantra recommendations.",
-    icon: Moon,
-  },
-  {
-    title: "Nadi Dosha",
-    body: "Arises when both partners share the same Nadi in Ashtakoot matching, believed to affect health and progeny.",
-    remedy: "Assessed carefully alongside other compatibility factors; remedies vary by the specific Nadi involved.",
     icon: AlertTriangle,
   },
   {
-    title: "Grahan Dosha",
+    id: "guru-chandal-dosh",
+    title: "Guru Chandal Dosh",
+    body: "Forms when Jupiter conjoins Rahu, believed to cloud judgement and complicate guidance from mentors or elders.",
+    remedy: "Pacified through Guru mantra japa, yellow-sapphire guidance, and targeted Rahu remedial measures.",
+    icon: Sparkles,
+  },
+  {
+    id: "grahan-dosh",
+    title: "Grahan Dosh (Eclipse Dosh)",
     body: "Present when the Sun or Moon is closely conjunct Rahu or Ketu, associated with clarity and confidence in some readings.",
     remedy: "Addressed through targeted mantra japa and strengthening the afflicted planet via its remedial measures.",
     icon: Sparkles,
+  },
+  {
+    id: "ketu-dosh",
+    title: "Ketu Dosh",
+    body: "Occurs when Ketu is poorly placed or afflicted, often linked to detachment, confusion or sudden unexplained setbacks.",
+    remedy: "Balanced through Ketu mantra japa, cat's-eye gemstone guidance, and spiritual practices like meditation.",
+    icon: Waves,
+  },
+  {
+    id: "rahu-dosh",
+    title: "Rahu Dosh",
+    body: "Arises when Rahu afflicts key houses or planets, associated with sudden upheavals, confusion and unconventional obstacles.",
+    remedy: "Pacified with Rahu mantra japa, hessonite (Gomed) gemstone guidance, and targeted remedial rituals.",
+    icon: Flame,
   },
 ];
 
@@ -71,11 +98,12 @@ export function DoshaPage() {
             variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06 } } }}
             className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
           >
-            {DOSHAS.map(({ title, body, remedy, icon: Icon }) => (
+            {DOSHAS.map(({ id, title, body, remedy, icon: Icon }) => (
               <motion.li
                 key={title}
+                id={id}
                 variants={{ hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } }}
-                className="card-lift ring-gradient relative overflow-hidden rounded-3xl glass p-6"
+                className="card-lift ring-gradient relative scroll-mt-28 overflow-hidden rounded-3xl glass p-6"
               >
                 <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-primary/70 to-accent/70 shadow-glow">
                   <Icon className="h-6 w-6 text-white" strokeWidth={1.8} />

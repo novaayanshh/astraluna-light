@@ -161,6 +161,54 @@ export const AI_ASTROLOGERS: Astrologer[] = [
       "Certified Property Muhurat & Vastu Consultant",
     ],
   },
+  {
+    slug: "meera-joshi",
+    name: "Meera Joshi",
+    tag: "Vedic",
+    expertise: "Love",
+    image: astro2,
+    experience: "9 Years of Experience",
+    language: "Hindi, English, Marathi",
+    rate: 20,
+    about:
+      "Specialises in love, relationship and marriage compatibility readings — studying the 5th and 7th houses along with Venus's placement to guide clients through matters of the heart.",
+    education: [
+      "Jyotish Acharya, Relationship & Compatibility Astrology",
+      "Certified Ashtakoot Matching Specialist",
+    ],
+  },
+  {
+    slug: "ishaan-kapoor",
+    name: "Ishaan Kapoor",
+    tag: "Vedic",
+    expertise: "Foreign Travel",
+    image: astro3,
+    experience: "10 Years of Experience",
+    language: "Hindi, English",
+    rate: 20,
+    about:
+      "Focuses on foreign travel and relocation astrology, reading the 9th and 12th houses to advise on visas, migration timing and settling abroad.",
+    education: [
+      "Jyotish Acharya, Foreign Travel & Relocation Astrology",
+      "Certified Rahu & 12th House Specialist",
+    ],
+  },
+  {
+    slug: "rudra-nath",
+    name: "Rudra Nath",
+    tag: "Vedic",
+    expertise: "Karma",
+    image: astro4,
+    experience: "14 Years of Experience",
+    language: "Hindi, English, Sanskrit",
+    rate: 20,
+    about:
+      "A karmic astrologer who reads past-life indicators, Saturn's placement and the nodal axis to help clients understand recurring life patterns and karmic lessons.",
+    education: [
+      "Jyotish Acharya, Karma & Nodal Axis Astrology",
+      "Certified Past-Life & Karmic Pattern Reader",
+    ],
+  },
 ];
 
 export function getAstrologerBySlug(slug: string) {

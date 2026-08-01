@@ -5,7 +5,7 @@ import { Footer } from "@/components/site/Footer";
 
 export const Route = createFileRoute("/signup")({
   head: () => ({
-    meta: [{ title: "Create Account — Astrology" }],
+    meta: [{ title: "Create Account — Astrotring" }],
   }),
   component: SignupPage,
 });

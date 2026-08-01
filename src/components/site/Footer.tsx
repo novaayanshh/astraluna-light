@@ -82,7 +82,7 @@ export function Footer() {
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 sm:flex-row">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Astrology. Guided by the stars.
+            © {new Date().getFullYear()} Astrotring. Guided by the stars.
           </p>
           <p className="text-xs text-muted-foreground">
             Crafted with intention · Made for seekers everywhere.
