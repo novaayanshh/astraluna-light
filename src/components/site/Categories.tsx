@@ -11,20 +11,21 @@ const SIGNS: {
   name: string;
   dates: string;
   glyph: string;
+  image: string;
   element: "fire" | "earth" | "air" | "water";
 }[] = [
-  { name: "Aries", dates: "Mar 21 – Apr 19", glyph: "ARI", element: "fire" },
-  { name: "Taurus", dates: "Apr 20 – May 20", glyph: "TAU", element: "earth" },
-  { name: "Gemini", dates: "May 21 – Jun 20", glyph: "GEM", element: "air" },
-  { name: "Cancer", dates: "Jun 21 – Jul 22", glyph: "CAN", element: "water" },
-  { name: "Leo", dates: "Jul 23 – Aug 22", glyph: "LEO", element: "fire" },
-  { name: "Virgo", dates: "Aug 23 – Sep 22", glyph: "VIR", element: "earth" },
-  { name: "Libra", dates: "Sep 23 – Oct 22", glyph: "LIB", element: "air" },
-  { name: "Scorpio", dates: "Oct 23 – Nov 21", glyph: "SCO", element: "water" },
-  { name: "Sagittarius", dates: "Nov 22 – Dec 21", glyph: "SAG", element: "fire" },
-  { name: "Capricorn", dates: "Dec 22 – Jan 19", glyph: "CAP", element: "earth" },
-  { name: "Aquarius", dates: "Jan 20 – Feb 18", glyph: "AQU", element: "air" },
-  { name: "Pisces", dates: "Feb 19 – Mar 20", glyph: "PIS", element: "water" },
+  { name: "Aries", dates: "Mar 21 – Apr 19", glyph: "ARI", image: "/Aries.png", element: "fire" },
+  { name: "Taurus", dates: "Apr 20 – May 20", glyph: "TAU", image: "/Taurus.png", element: "earth" },
+  { name: "Gemini", dates: "May 21 – Jun 20", glyph: "GEM", image: "/Gemini.png", element: "air" },
+  { name: "Cancer", dates: "Jun 21 – Jul 22", glyph: "CAN", image: "/Cancer.png", element: "water" },
+  { name: "Leo", dates: "Jul 23 – Aug 22", glyph: "LEO", image: "/Leo.png", element: "fire" },
+  { name: "Virgo", dates: "Aug 23 – Sep 22", glyph: "VIR", image: "", element: "earth" },
+  { name: "Libra", dates: "Sep 23 – Oct 22", glyph: "LIB", image: "/Libra.png", element: "air" },
+  { name: "Scorpio", dates: "Oct 23 – Nov 21", glyph: "SCO", image: "/Scorpio.png", element: "water" },
+  { name: "Sagittarius", dates: "Nov 22 – Dec 21", glyph: "SAG", image: "/Sagittarius.png", element: "fire" },
+  { name: "Capricorn", dates: "Dec 22 – Jan 19", glyph: "CAP", image: "/Capricon.png", element: "earth" },
+  { name: "Aquarius", dates: "Jan 20 – Feb 18", glyph: "AQU", image: "/Aquarious.png", element: "air" },
+  { name: "Pisces", dates: "Feb 19 – Mar 20", glyph: "PIS", image: "/Pisces.png", element: "water" },
 ];
 
 const ELEMENT_ICON: Record<string, LucideIcon> = {
@@ -46,9 +47,9 @@ export function Categories() {
     <section id="horoscope" className="relative py-24 lg:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
         <SectionHeading
-          eyebrow="Daily Horoscope"
-          title="Read the stars written for you"
-          description="Your zodiac's cosmic weather — refreshed every morning by senior Vedic astrologers."
+          eyebrow="Moon Sign Predictions"
+          title="Monthly Predictions As Per Moon Signs"
+          description="Your zodiac's cosmic weather — refreshed every month by senior Vedic astrologers."
         />
 
         <motion.ul
@@ -79,9 +80,22 @@ export function Categories() {
                     className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${ELEMENT_TINT[sign.element]} opacity-0 transition-opacity duration-500 group-hover:opacity-100`}
                   />
                   <div className="relative">
-                    <div className="mx-auto inline-flex h-11 items-center rounded-xl bg-gradient-to-br from-primary/80 to-accent/80 px-3 font-display text-base font-bold tracking-wide text-white shadow-glow transition-transform duration-500 group-hover:scale-110">
-                      {sign.glyph}
-                    </div>
+                    {sign.image ? (
+                      <div className="mx-auto grid h-16 w-16 place-items-center overflow-hidden rounded-full bg-gradient-to-br from-primary/15 to-accent/10 ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110">
+                        <img
+                          src={sign.image}
+                          alt={`${sign.name} zodiac illustration`}
+                          loading="lazy"
+                          width={64}
+                          height={64}
+                          className="h-full w-full object-contain p-1.5"
+                        />
+                      </div>
+                    ) : (
+                      <div className="mx-auto inline-flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-primary/80 to-accent/80 font-display text-base font-bold tracking-wide text-white shadow-glow transition-transform duration-500 group-hover:scale-110">
+                        {sign.glyph}
+                      </div>
+                    )}
                     <div className="mt-4 font-display text-lg text-foreground">
                       {sign.name}
                     </div>
