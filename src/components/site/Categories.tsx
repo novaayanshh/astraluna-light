@@ -19,7 +19,7 @@ const SIGNS: {
   { name: "Gemini", dates: "May 21 – Jun 20", glyph: "GEM", image: "/Gemini.png", element: "air" },
   { name: "Cancer", dates: "Jun 21 – Jul 22", glyph: "CAN", image: "/Cancer.png", element: "water" },
   { name: "Leo", dates: "Jul 23 – Aug 22", glyph: "LEO", image: "/Leo.png", element: "fire" },
-  { name: "Virgo", dates: "Aug 23 – Sep 22", glyph: "VIR", image: "", element: "earth" },
+  { name: "Virgo", dates: "Aug 23 – Sep 22", glyph: "VIR", image: "/Virgo.png", element: "earth" },
   { name: "Libra", dates: "Sep 23 – Oct 22", glyph: "LIB", image: "/Libra.png", element: "air" },
   { name: "Scorpio", dates: "Oct 23 – Nov 21", glyph: "SCO", image: "/Scorpio.png", element: "water" },
   { name: "Sagittarius", dates: "Nov 22 – Dec 21", glyph: "SAG", image: "/Sagittarius.png", element: "fire" },
