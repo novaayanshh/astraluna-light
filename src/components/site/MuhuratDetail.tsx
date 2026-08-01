@@ -69,6 +69,35 @@ export function MuhuratDetail({ muhurat }: { muhurat: Muhurat }) {
               </p>
             </div>
 
+            <div className="mt-10 space-y-8">
+              <div>
+                <h3 className="font-display text-xl font-bold text-foreground">
+                  {muhurat.meaningTitle}
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                  {muhurat.meaning}
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-display text-xl font-bold text-foreground">
+                  {muhurat.timingTitle}
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                  {muhurat.timing}
+                </p>
+              </div>
+
+              <div>
+                <h3 className="font-display text-xl font-bold text-foreground">
+                  {muhurat.ritualsTitle}
+                </h3>
+                <p className="mt-3 text-base leading-relaxed text-muted-foreground">
+                  {muhurat.rituals}
+                </p>
+              </div>
+            </div>
+
             <div className="mt-10 flex flex-wrap gap-3">
               <Link
                 to="/consultation"
