@@ -18,6 +18,7 @@ import { Route as LoginRouteImport } from './routes/login'
 import { Route as MuhuratRouteImport } from './routes/muhurat'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as AstrologersSlugRouteImport } from './routes/Astrologers/$slug'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -64,6 +65,11 @@ const SignupRoute = SignupRouteImport.update({
   path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AstrologersSlugRoute = AstrologersSlugRouteImport.update({
+  id: '/Astrologers/$slug',
+  path: '/Astrologers/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/muhurat': typeof MuhuratRoute
   '/shop': typeof ShopRoute
   '/signup': typeof SignupRoute
+  '/Astrologers/$slug': typeof AstrologersSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/muhurat': typeof MuhuratRoute
   '/shop': typeof ShopRoute
   '/signup': typeof SignupRoute
+  '/Astrologers/$slug': typeof AstrologersSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/muhurat': typeof MuhuratRoute
   '/shop': typeof ShopRoute
   '/signup': typeof SignupRoute
+  '/Astrologers/$slug': typeof AstrologersSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/muhurat'
     | '/shop'
     | '/signup'
+    | '/Astrologers/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/muhurat'
     | '/shop'
     | '/signup'
+    | '/Astrologers/$slug'
   id:
     | '__root__'
     | '/'
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/muhurat'
     | '/shop'
     | '/signup'
+    | '/Astrologers/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,6 +157,7 @@ export interface RootRouteChildren {
   MuhuratRoute: typeof MuhuratRoute
   ShopRoute: typeof ShopRoute
   SignupRoute: typeof SignupRoute
+  AstrologersSlugRoute: typeof AstrologersSlugRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -212,6 +225,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/Astrologers/$slug': {
+      id: '/Astrologers/$slug'
+      path: '/Astrologers/$slug'
+      fullPath: '/Astrologers/$slug'
+      preLoaderRoute: typeof AstrologersSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -225,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   MuhuratRoute: MuhuratRoute,
   ShopRoute: ShopRoute,
   SignupRoute: SignupRoute,
+  AstrologersSlugRoute: AstrologersSlugRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
