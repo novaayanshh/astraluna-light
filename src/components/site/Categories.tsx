@@ -14,18 +14,18 @@ const SIGNS: {
   image: string;
   element: "fire" | "earth" | "air" | "water";
 }[] = [
-  { name: "Aries", dates: "Mar 21 – Apr 19", glyph: "ARI", image: "/Aries.png", element: "fire" },
-  { name: "Taurus", dates: "Apr 20 – May 20", glyph: "TAU", image: "/Taurus.png", element: "earth" },
-  { name: "Gemini", dates: "May 21 – Jun 20", glyph: "GEM", image: "/Gemini.png", element: "air" },
-  { name: "Cancer", dates: "Jun 21 – Jul 22", glyph: "CAN", image: "/Cancer.png", element: "water" },
-  { name: "Leo", dates: "Jul 23 – Aug 22", glyph: "LEO", image: "/Leo.png", element: "fire" },
-  { name: "Virgo", dates: "Aug 23 – Sep 22", glyph: "VIR", image: "/Virgo.png", element: "earth" },
-  { name: "Libra", dates: "Sep 23 – Oct 22", glyph: "LIB", image: "/Libra.png", element: "air" },
-  { name: "Scorpio", dates: "Oct 23 – Nov 21", glyph: "SCO", image: "/Scorpio.png", element: "water" },
-  { name: "Sagittarius", dates: "Nov 22 – Dec 21", glyph: "SAG", image: "/Sagittarius.png", element: "fire" },
-  { name: "Capricorn", dates: "Dec 22 – Jan 19", glyph: "CAP", image: "/Capricon.png", element: "earth" },
-  { name: "Aquarius", dates: "Jan 20 – Feb 18", glyph: "AQU", image: "/Aquarious.png", element: "air" },
-  { name: "Pisces", dates: "Feb 19 – Mar 20", glyph: "PIS", image: "/Pisces.png", element: "water" },
+  { name: "Aries", dates: "Mar 21 – Apr 19", glyph: "ARI", image: "/aries-KxO7nP9A.webp", element: "fire" },
+  { name: "Taurus", dates: "Apr 20 – May 20", glyph: "TAU", image: "/taurus-BYxEmmrx.webp", element: "earth" },
+  { name: "Gemini", dates: "May 21 – Jun 20", glyph: "GEM", image: "/gemini-6zulReUB.webp", element: "air" },
+  { name: "Cancer", dates: "Jun 21 – Jul 22", glyph: "CAN", image: "/cancer-C_dxN-8s.webp", element: "water" },
+  { name: "Leo", dates: "Jul 23 – Aug 22", glyph: "LEO", image: "/leo-_NR55xqJ.webp", element: "fire" },
+  { name: "Virgo", dates: "Aug 23 – Sep 22", glyph: "VIR", image: "/virgo-BNP1NYmB.webp", element: "earth" },
+  { name: "Libra", dates: "Sep 23 – Oct 22", glyph: "LIB", image: "/libra-BmQ7M_q-.webp", element: "air" },
+  { name: "Scorpio", dates: "Oct 23 – Nov 21", glyph: "SCO", image: "/scorpio-E6aDllmG.webp", element: "water" },
+  { name: "Sagittarius", dates: "Nov 22 – Dec 21", glyph: "SAG", image: "/sagittarius-CTZbtTko.webp", element: "fire" },
+  { name: "Capricorn", dates: "Dec 22 – Jan 19", glyph: "CAP", image: "/capricorn-CaigM1Sd.webp", element: "earth" },
+  { name: "Aquarius", dates: "Jan 20 – Feb 18", glyph: "AQU", image: "/aquarius-CuQ8WK_q.webp", element: "air" },
+  { name: "Pisces", dates: "Feb 19 – Mar 20", glyph: "PIS", image: "/pisces-DwiBbkF6.webp", element: "water" },
 ];
 
 const ELEMENT_ICON: Record<string, LucideIcon> = {

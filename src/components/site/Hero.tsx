@@ -149,18 +149,18 @@ export function Hero() {
 
           {/* Zodiac chips */}
           {[
-            { name: "Aries", image: "/Aries.png" },
-            { name: "Taurus", image: "/Taurus.png" },
-            { name: "Gemini", image: "/Gemini.png" },
-            { name: "Cancer", image: "/Cancer.png" },
-            { name: "Leo", image: "/Leo.png" },
-            { name: "Virgo", image: "/Virgo.png" },
-            { name: "Libra", image: "/Libra.png" },
-            { name: "Scorpio", image: "/Scorpio.png" },
-            { name: "Sagittarius", image: "/Sagittarius.png" },
-            { name: "Capricorn", image: "/Capricon.png" },
-            { name: "Aquarius", image: "/Aquarious.png" },
-            { name: "Pisces", image: "/Pisces.png" },
+            { name: "Aries", image: "/aries-KxO7nP9A.webp" },
+            { name: "Taurus", image: "/taurus-BYxEmmrx.webp" },
+            { name: "Gemini", image: "/gemini-6zulReUB.webp" },
+            { name: "Cancer", image: "/cancer-C_dxN-8s.webp" },
+            { name: "Leo", image: "/leo-_NR55xqJ.webp" },
+            { name: "Virgo", image: "/virgo-BNP1NYmB.webp" },
+            { name: "Libra", image: "/libra-BmQ7M_q-.webp" },
+            { name: "Scorpio", image: "/scorpio-E6aDllmG.webp" },
+            { name: "Sagittarius", image: "/sagittarius-CTZbtTko.webp" },
+            { name: "Capricorn", image: "/capricorn-CaigM1Sd.webp" },
+            { name: "Aquarius", image: "/aquarius-CuQ8WK_q.webp" },
+            { name: "Pisces", image: "/pisces-DwiBbkF6.webp" },
           ].map((sign, i) => {
             const angle = (i / 12) * Math.PI * 2 - Math.PI / 2;
             const x = 50 + 48 * Math.cos(angle);
