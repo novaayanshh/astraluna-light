@@ -13,13 +13,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const NAV_ITEMS = [
-  { label: "Horoscopes", href: "/horoscopes" },
+  {
+    label: "Horoscopes",
+    href: "/horoscopes",
+    dropdown: [
+      { label: "Yearly Horoscope", href: "/horoscopes?period=Yearly" },
+      { label: "Monthly Horoscope", href: "/horoscopes?period=Monthly" },
+    ],
+  },
   { label: "Consultation", href: "/consultation" },
   { label: "Doshas", href: "/doshas" },
   { label: "Muhurat", href: "/muhurat" },
   { label: "Shop", href: "/shop" },
   { label: "Blogs", href: "/blog" },
-];
+] as const;
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -70,29 +77,43 @@ export function Navbar() {
         </Link>
 
         <ul className="hidden items-center gap-1 lg:flex">
-          {NAV_ITEMS.map((item) => (
-            <li key={item.href} className="flex items-center">
-              <Sparkles className="h-3.5 w-3.5 text-primary" fill="currentColor" strokeWidth={0} />
-              {item.href.startsWith("/#") ? (
-                <a
-                  href={item.href}
-                  className="group flex items-center gap-1 rounded-full px-3 py-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-primary"
-                >
-                  {item.label}
-                  {item.hasDropdown && (
-                    <ChevronDown className="h-3.5 w-3.5 transition-transform group-hover:rotate-180" />
-                  )}
-                </a>
-              ) : (
+          {NAV_ITEMS.map((item) => {
+            const hasDropdown = "dropdown" in item && item.dropdown;
+            return (
+              <li
+                key={item.href}
+                className="group/nav relative flex items-center"
+              >
+                <Sparkles className="h-3.5 w-3.5 text-primary" fill="currentColor" strokeWidth={0} />
                 <Link
                   to={item.href}
                   className="group flex items-center gap-1 rounded-full px-3 py-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-primary data-[status=active]:text-primary"
                 >
                   {item.label}
+                  {hasDropdown && (
+                    <ChevronDown className="h-3.5 w-3.5 transition-transform duration-300 group-hover/nav:rotate-180" />
+                  )}
                 </Link>
-              )}
-            </li>
-          ))}
+
+                {hasDropdown && (
+                  <div
+                    className="invisible absolute left-0 top-full z-50 min-w-[200px] translate-y-1 rounded-2xl glass-strong p-2 opacity-0 shadow-[0_12px_40px_-12px_oklch(0.4_0.05_60/0.35)] transition-all duration-200 group-hover/nav:visible group-hover/nav:translate-y-0 group-hover/nav:opacity-100"
+                  >
+                    {item.dropdown.map((sub) => (
+                      <a
+                        key={sub.href}
+                        href={sub.href}
+                        className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-sm font-semibold text-foreground/80 transition-colors hover:bg-primary/10 hover:text-primary"
+                      >
+                        <Sparkles className="h-3.5 w-3.5 text-primary" fill="currentColor" strokeWidth={0} />
+                        {sub.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </li>
+            );
+          })}
         </ul>
 
         <div className="hidden items-center gap-3 lg:flex">

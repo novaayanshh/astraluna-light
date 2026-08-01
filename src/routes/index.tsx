@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Toaster } from "sonner";
 import { Hero } from "@/components/site/Hero";
 import { Categories } from "@/components/site/Categories";
+import { ComplimentaryServices } from "@/components/site/ComplimentaryServices";
 import { Astrologers } from "@/components/site/Astrologers";
 import { Process } from "@/components/site/Process";
 import { Kundli } from "@/components/site/Kundli";
@@ -21,6 +22,7 @@ function Home() {
       <main>
         <Hero />
         <Categories />
+        <ComplimentaryServices />
         <Astrologers />
         <Process />
         <Kundli />

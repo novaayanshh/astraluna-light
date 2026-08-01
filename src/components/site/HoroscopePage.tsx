@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Flame,
   Mountain,
@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import { SectionHeading } from "./Categories";
 
-const PERIODS = ["Daily", "Weekly", "Monthly"] as const;
+const PERIODS = ["Daily", "Weekly", "Monthly", "Yearly"] as const;
 
 const SIGNS: {
   name: string;
@@ -146,6 +146,13 @@ const ELEMENT_TINT: Record<string, string> = {
 export function HoroscopePage() {
   const [period, setPeriod] = useState<(typeof PERIODS)[number]>("Daily");
   const [active, setActive] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fromUrl = new URLSearchParams(window.location.search).get("period");
+    if (fromUrl && (PERIODS as readonly string[]).includes(fromUrl)) {
+      setPeriod(fromUrl as (typeof PERIODS)[number]);
+    }
+  }, []);
 
   return (
     <>
