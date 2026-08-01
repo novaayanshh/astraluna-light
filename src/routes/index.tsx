@@ -4,7 +4,6 @@ import { Hero } from "@/components/site/Hero";
 import { Categories } from "@/components/site/Categories";
 import { ComplimentaryServices } from "@/components/site/ComplimentaryServices";
 import { Astrologers } from "@/components/site/Astrologers";
-import { Process } from "@/components/site/Process";
 import { Kundli } from "@/components/site/Kundli";
 import { Services } from "@/components/site/Services";
 import { Stats } from "@/components/site/Stats";
@@ -25,7 +24,6 @@ function Home() {
         <Categories />
         <ComplimentaryServices />
         <Astrologers />
-        <Process />
         <Kundli />
         <Services />
         <Stats />
