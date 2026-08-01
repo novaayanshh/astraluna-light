@@ -1,22 +1,8 @@
 import { motion } from "framer-motion";
+import { Link } from "@tanstack/react-router";
 import { Sparkles } from "lucide-react";
-import astro1 from "@/assets/astrologer-1.jpg";
-import astro2 from "@/assets/astrologer-2.jpg";
-import astro3 from "@/assets/astrologer-3.jpg";
-import astro4 from "@/assets/astrologer-4.jpg";
+import { AI_ASTROLOGERS } from "@/data/astrologers";
 import { SectionHeading } from "./Categories";
-
-const AI_ASTROLOGERS = [
-  { name: "Pandit Ravi Shastri", tag: "Vedic", expertise: "Finance", image: astro2 },
-  { name: "Kailash Iyer", tag: "Vedic", expertise: "Health", image: astro1 },
-  { name: "Neel Madhav", tag: "Vedic", expertise: "Education", image: astro3 },
-  { name: "Aarav Sharma", tag: "Vedic", expertise: "Life Path", image: astro4 },
-  { name: "Meera Joshi", tag: "Vedic", expertise: "Love", image: astro3 },
-  { name: "Acharya Vikas", tag: "Vedic", expertise: "Timing & Predictions", image: astro2 },
-  { name: "Amit Rao", tag: "Vedic", expertise: "Muhurat", image: astro1 },
-  { name: "Sundeep Kumar", tag: "Vedic", expertise: "Children", image: astro4 },
-  { name: "Dev Malhotra", tag: "Vedic", expertise: "Property", image: astro2 },
-];
 
 export function Astrologers() {
   return (
@@ -40,52 +26,51 @@ export function Astrologers() {
         >
           {AI_ASTROLOGERS.map((a) => (
             <motion.li
-              key={a.name}
+              key={a.slug}
               variants={{
                 hidden: { opacity: 0, y: 24 },
                 show: { opacity: 1, y: 0 },
               }}
-              className="card-lift ring-gradient group relative flex items-center gap-4 overflow-hidden rounded-2xl glass p-4"
+              whileHover={{ y: -4 }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
             >
-              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full ring-2 ring-primary/30">
-                <img
-                  src={a.image}
-                  alt={`Portrait of ${a.name}`}
-                  loading="lazy"
-                  width={128}
-                  height={128}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              <Link
+                to="/astrologers/$slug"
+                params={{ slug: a.slug }}
+                className="ring-gradient group relative flex items-center gap-4 overflow-hidden rounded-2xl glass p-4 shadow-sm transition-shadow hover:shadow-[0_16px_40px_-16px_oklch(0.5_0.08_60/0.35)]"
+              >
+                <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full ring-2 ring-primary/30">
+                  <img
+                    src={a.image}
+                    alt={`Portrait of ${a.name}`}
+                    loading="lazy"
+                    width={128}
+                    height={128}
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                </div>
+
+                <div className="min-w-0 flex-1">
+                  <h3 className="truncate font-display text-base text-foreground">{a.name}</h3>
+                  <p className="mt-0.5 text-xs text-muted-foreground">{a.tag}</p>
+                  <p className="mt-1 truncate text-xs text-muted-foreground">
+                    Expertise: <span className="font-medium text-primary">{a.expertise}</span>
+                  </p>
+                  <p className="mt-1.5 font-display text-sm gradient-gold">
+                    ₹{a.rate.toFixed(2)}
+                    <span className="text-[10px] text-muted-foreground">/msg</span>
+                  </p>
+                </div>
+
+                <Sparkles
+                  className="absolute right-3 top-3 h-3.5 w-3.5 text-primary/40"
+                  fill="currentColor"
+                  strokeWidth={0}
                 />
-              </div>
-
-              <div className="min-w-0 flex-1">
-                <h3 className="truncate font-display text-base text-foreground">{a.name}</h3>
-                <p className="mt-0.5 text-xs text-muted-foreground">{a.tag}</p>
-                <p className="mt-1 text-xs text-muted-foreground">
-                  Expertise: <span className="font-medium text-primary">{a.expertise}</span>
-                </p>
-                <p className="mt-1.5 font-display text-sm gradient-gold">
-                  ₹20.00<span className="text-[10px] text-muted-foreground">/msg</span>
-                </p>
-              </div>
-
-              <Sparkles
-                className="absolute right-3 top-3 h-3.5 w-3.5 text-primary/40"
-                fill="currentColor"
-                strokeWidth={0}
-              />
+              </Link>
             </motion.li>
           ))}
         </motion.ul>
-
-        <div className="mt-12 text-center">
-          <a
-            href="#all-astrologers"
-            className="glass ring-gradient inline-flex h-12 items-center gap-2 rounded-full px-6 text-sm font-medium text-foreground transition-transform hover:-translate-y-0.5"
-          >
-            Browse all astrologers
-          </a>
-        </div>
       </div>
     </section>
   );
