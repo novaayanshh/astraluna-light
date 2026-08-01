@@ -148,18 +148,38 @@ export function Hero() {
           <div className="absolute inset-24 rounded-full border border-primary/10" />
 
           {/* Zodiac chips */}
-          {["♈","♉","♊","♋","♌","♍","♎","♏","♐","♑","♒","♓"].map((sign, i) => {
+          {[
+            { name: "Aries", image: "/Aries.png" },
+            { name: "Taurus", image: "/Taurus.png" },
+            { name: "Gemini", image: "/Gemini.png" },
+            { name: "Cancer", image: "/Cancer.png" },
+            { name: "Leo", image: "/Leo.png" },
+            { name: "Virgo", image: "/Virgo.png" },
+            { name: "Libra", image: "/Libra.png" },
+            { name: "Scorpio", image: "/Scorpio.png" },
+            { name: "Sagittarius", image: "/Sagittarius.png" },
+            { name: "Capricorn", image: "/Capricon.png" },
+            { name: "Aquarius", image: "/Aquarious.png" },
+            { name: "Pisces", image: "/Pisces.png" },
+          ].map((sign, i) => {
             const angle = (i / 12) * Math.PI * 2 - Math.PI / 2;
             const x = 50 + 48 * Math.cos(angle);
             const y = 50 + 48 * Math.sin(angle);
             return (
               <div
-                key={sign}
+                key={sign.name}
                 style={{ left: `${x}%`, top: `${y}%` }}
                 className="absolute -translate-x-1/2 -translate-y-1/2"
               >
-                <div className="grid h-10 w-10 place-items-center rounded-full bg-card font-display text-lg text-primary shadow-[0_6px_20px_-8px_oklch(0.7_0.2_55/0.5)] ring-1 ring-primary/20">
-                  {sign}
+                <div className="grid h-10 w-10 place-items-center overflow-hidden rounded-full bg-card shadow-[0_6px_20px_-8px_oklch(0.7_0.2_55/0.5)] ring-1 ring-primary/20">
+                  <img
+                    src={sign.image}
+                    alt={sign.name}
+                    loading="lazy"
+                    width={40}
+                    height={40}
+                    className="h-full w-full object-contain p-1"
+                  />
                 </div>
               </div>
             );
