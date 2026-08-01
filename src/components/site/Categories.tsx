@@ -6,6 +6,7 @@ import {
   Droplet,
   type LucideIcon,
 } from "lucide-react";
+import type { ReactNode } from "react";
 
 const SIGNS: {
   name: string;
@@ -126,7 +127,7 @@ export function SectionHeading({
 }: {
   eyebrow?: string;
   title: string;
-  description?: string;
+  description?: ReactNode;
   align?: "center" | "left";
   plain?: boolean;
 }) {

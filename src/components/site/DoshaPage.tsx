@@ -1,78 +1,69 @@
 import { motion } from "framer-motion";
-import {
-  AlertTriangle,
-  Flame,
-  Moon,
-  Users,
-  Waves,
-  Sparkles,
-  type LucideIcon,
-} from "lucide-react";
 import { SectionHeading } from "./Categories";
 
-const DOSHAS: { id: string; title: string; body: string; remedy: string; icon: LucideIcon }[] = [
+const DOSHAS: { id: string; title: string; body: string; remedy: string; image: string }[] = [
   {
     id: "mangal-dosh",
     title: "Mangal Dosh (Manglik Dosh)",
-    body: "Occurs when Mars sits in specific houses of the birth chart, and is traditionally examined before marriage matching.",
+    body: "Formed due to the placement of Mars in specific houses of the birth chart. It may cause delays in marriage and relationship challenges.",
     remedy: "Often addressed through Kumbh Vivah rituals, Hanuman worship, or matching with another Manglik chart.",
-    icon: Flame,
+    image: "/Mangaldhosh-uXp4su-6.webp",
   },
   {
     id: "kaal-sarp-dosh",
     title: "Kaal Sarp Dosh",
-    body: "Forms when all seven classical planets fall between Rahu and Ketu, said to create recurring obstacles and delays.",
+    body: "Occurs when all planets are positioned between Rahu and Ketu. It can create life struggles and sudden obstacles.",
     remedy: "Commonly pacified with Rahu-Ketu remedies, specific mantras, and worship at Trimbakeshwar or similar temples.",
-    icon: Waves,
+    image: "/sharpdosh-DZeCLuS4.webp",
   },
   {
     id: "chandra-dosh",
     title: "Chandra Dosh",
-    body: "Arises when the Moon is afflicted by malefic planets, often linked to emotional instability, anxiety and a restless mind.",
+    body: "Happens when the Moon is weak. It may lead to emotional instability and mental imbalance.",
     remedy: "Eased with Moon-strengthening remedies — Somvar fasting, pearl gemstone guidance, and Chandra mantra japa.",
-    icon: Moon,
+    image: "/chandradosh-oOnJ98am.webp",
   },
   {
     id: "pitra-dosh",
     title: "Pitra Dosh",
-    body: "Linked to unresolved ancestral karma, often associated with the Sun or Saturn's placement relative to Rahu.",
+    body: "Associated with ancestral karmic imbalance causing obstacles in career and family life.",
     remedy: "Typically eased through Pitru Paksha rituals, Tarpan, and offerings to ancestors on relevant tithis.",
-    icon: Users,
+    image: "/pitradosh-BdVSztX-.webp",
   },
   {
     id: "shani-dosh",
     title: "Shani Dosh",
-    body: "Covers Sade Sati and Dhaiya — Saturn's transit phases around the natal Moon, known for testing patience and resilience.",
+    body: "Formed due to challenging placement of Saturn bringing delays and hardships.",
     remedy: "Managed with Shani worship, discipline in daily routine, and specific gemstone or mantra recommendations.",
-    icon: AlertTriangle,
+    image: "/shanidosh-CEkDO1Bg.webp",
   },
   {
     id: "guru-chandal-dosh",
     title: "Guru Chandal Dosh",
-    body: "Forms when Jupiter conjoins Rahu, believed to cloud judgement and complicate guidance from mentors or elders.",
+    body: "Occurs when Jupiter and Rahu are conjunct causing confusion and impaired judgment.",
     remedy: "Pacified through Guru mantra japa, yellow-sapphire guidance, and targeted Rahu remedial measures.",
-    icon: Sparkles,
+    image: "/guruchandaldosh-x_wACGPh.webp",
   },
   {
     id: "grahan-dosh",
     title: "Grahan Dosh (Eclipse Dosh)",
-    body: "Present when the Sun or Moon is closely conjunct Rahu or Ketu, associated with clarity and confidence in some readings.",
+    body: "Present when the Sun or Moon is closely conjunct Rahu or Ketu, associated with clarity and confidence issues.",
     remedy: "Addressed through targeted mantra japa and strengthening the afflicted planet via its remedial measures.",
-    icon: Sparkles,
+    image: "/grahandosh-ORoT261x.webp",
   },
   {
     id: "ketu-dosh",
     title: "Ketu Dosh",
     body: "Occurs when Ketu is poorly placed or afflicted, often linked to detachment, confusion or sudden unexplained setbacks.",
     remedy: "Balanced through Ketu mantra japa, cat's-eye gemstone guidance, and spiritual practices like meditation.",
-    icon: Waves,
+    image: "/ketudosh-CxrJ64qa.webp",
   },
   {
     id: "rahu-dosh",
     title: "Rahu Dosh",
     body: "Arises when Rahu afflicts key houses or planets, associated with sudden upheavals, confusion and unconventional obstacles.",
     remedy: "Pacified with Rahu mantra japa, hessonite (Gomed) gemstone guidance, and targeted remedial rituals.",
-    icon: Flame,
+    image: "/rahudosh-DGPyBSbM.webp",
   },
 ];
 
@@ -98,15 +89,15 @@ export function DoshaPage() {
             variants={{ hidden: {}, show: { transition: { staggerChildren: 0.06 } } }}
             className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
           >
-            {DOSHAS.map(({ id, title, body, remedy, icon: Icon }) => (
+            {DOSHAS.map(({ id, title, body, remedy, image }) => (
               <motion.li
                 key={title}
                 id={id}
                 variants={{ hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0 } }}
                 className="card-lift ring-gradient relative scroll-mt-28 overflow-hidden rounded-3xl glass p-6"
               >
-                <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-to-br from-primary/70 to-accent/70 shadow-glow">
-                  <Icon className="h-6 w-6 text-white" strokeWidth={1.8} />
+                <div className="relative grid h-16 w-16 place-items-center overflow-hidden rounded-2xl bg-gradient-to-br from-primary/15 to-accent/10 ring-1 ring-primary/20">
+                  <img src={image} alt="" aria-hidden="true" className="h-full w-full object-contain p-2" />
                 </div>
                 <h3 className="mt-5 font-display text-xl text-foreground">{title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{body}</p>

@@ -6,32 +6,32 @@ import { SectionHeading } from "./Categories";
 
 const REVIEWS = [
   {
-    name: "Priya Nair",
-    role: "Bangalore, IN",
-    rating: 5,
-    body: "Aditi's reading brought clarity I didn't know I needed. Six months later, every prediction has aligned with breathtaking precision.",
+    name: "Priya Mehta",
+    role: "Palm Reading",
+    rating: 4,
+    body: "The guidance was honest and practical. Would definitely recommend to others.",
   },
   {
     name: "Arjun Malhotra",
-    role: "London, UK",
+    role: "Kundli Consultation",
     rating: 5,
     body: "The kundli PDF is stunning — genuinely feels premium. Pandit Ravi's remedies transformed my career trajectory within weeks.",
   },
   {
     name: "Sofia Alvarez",
-    role: "Toronto, CA",
+    role: "Tarot Reading",
     rating: 5,
     body: "I've tried other astrology apps — none feel this intimate or accurate. Meera's tarot session left me in tears (the good kind).",
   },
   {
     name: "Rohan Bhat",
-    role: "Mumbai, IN",
-    rating: 5,
+    role: "Love & Relationships",
+    rating: 4,
     body: "The interface is so calming that consulting feels like a ritual. And the astrologers actually listen — that's rare.",
   },
   {
     name: "Elena Petrova",
-    role: "Berlin, DE",
+    role: "Career Consultation",
     rating: 5,
     body: "Booked a Vedic session on a whim; ended up with a life roadmap. Astrotring sets the gold standard.",
   },

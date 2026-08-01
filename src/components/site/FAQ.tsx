@@ -9,28 +9,81 @@ import { SectionHeading } from "./Categories";
 
 const FAQS = [
   {
-    q: "How do I know which astrologer is right for me?",
-    a: "Filter by specialty (Vedic, Tarot, Numerology), language and rating. Read reviews from real seekers, then chat for free before committing to a full session.",
+    q: "How do I consult an online astrologer?",
+    a: (
+      <>
+        It's quite simple. Visit <strong className="text-primary">Astrotring.com</strong>,
+        browse through our carefully verified astrologers based on their expertise, ratings,
+        and reviews, and book a session via chat, call, or video call. You'll need to share
+        your birth date, time, and place. Your astrologer will then analyze your chart and
+        address your specific questions with care and clarity. We also offer free introductory
+        sessions so you can get comfortable before committing to a full consultation.
+      </>
+    ),
   },
   {
-    q: "Is my personal information kept private?",
-    a: "Yes. All sessions are end-to-end encrypted and your birth details are stored securely. We never share your data with third parties or advertisers.",
+    q: "How can astrology help in love, marriage, and relationships?",
+    a: (
+      <>
+        On <strong className="text-primary">Astrotring.com</strong>, our astrologers read the
+        5th and 7th houses along with Venus's placement to assess compatibility, timing for
+        marriage, and challenges in existing relationships — offering practical remedies for
+        a stronger, healthier bond.
+      </>
+    ),
   },
   {
-    q: "What if I don't know my exact birth time?",
-    a: "We can still generate a Sun-sign reading with strong accuracy. For a full Kundli, our astrologers offer a rectification service to pinpoint your birth time.",
+    q: "What role does astrology play in career and finance?",
+    a: (
+      <>
+        Career and finance readings on <strong className="text-primary">Astrotring.com</strong>{" "}
+        study the 2nd, 10th and 11th houses along with the placement of Jupiter and Saturn to
+        guide clients on job changes, business timing, investments and long-term financial
+        stability.
+      </>
+    ),
   },
   {
-    q: "How much does a consultation cost?",
-    a: "Sessions start from $19 for chat and vary by astrologer's expertise, language and channel. Your first 3 minutes are always free.",
+    q: "Can astrology help with health-related concerns?",
+    a: (
+      <>
+        Yes. Medical astrology on <strong className="text-primary">Astrotring.com</strong> reads
+        the 6th and 8th houses to identify planetary influences on health and recommend
+        remedial measures — though it's always meant to complement, not replace, medical advice.
+      </>
+    ),
   },
   {
-    q: "Do you offer refunds?",
-    a: "Absolutely. If you're not satisfied within the first 5 minutes of a paid session, we'll refund it — no questions asked.",
+    q: "Is the birth time necessary for accurate readings?",
+    a: (
+      <>
+        An accurate birth time gives the most precise chart, but{" "}
+        <strong className="text-primary">Astrotring.com</strong> can still generate a
+        Sun-sign-based reading with strong accuracy if it's unknown. For a full Kundli, our
+        astrologers also offer a birth-time rectification service.
+      </>
+    ),
   },
   {
-    q: "Can I get a written report after my session?",
-    a: "Every consultation includes a beautifully designed PDF summary with insights, remedies and mantras, delivered to your inbox within 24 hours.",
+    q: "Can astrology predictions be changed through remedies?",
+    a: (
+      <>
+        Vedic astrology treats predictions as tendencies, not fixed outcomes. Astrologers on{" "}
+        <strong className="text-primary">Astrotring.com</strong> recommend remedies — mantras,
+        gemstones, rituals and lifestyle adjustments — to ease the effect of challenging
+        planetary placements.
+      </>
+    ),
+  },
+  {
+    q: "How reliable are astrology apps and platforms?",
+    a: (
+      <>
+        Reliability comes down to verified astrologers and transparent reviews. Every
+        astrologer on <strong className="text-primary">Astrotring.com</strong> is vetted for
+        expertise and rated by real clients, so you can choose with confidence.
+      </>
+    ),
   },
 ];
 
@@ -40,7 +93,13 @@ export function FAQ() {
       <div className="mx-auto max-w-4xl px-6 lg:px-10">
         <SectionHeading
           eyebrow="Frequently asked"
-          title="Questions, answered."
+          title="Frequently Asked Questions"
+          description={
+            <>
+              Here are the same answers, now branded with{" "}
+              <strong className="text-primary">Astrotring.com</strong> wherever relevant:
+            </>
+          }
         />
 
         <motion.div
@@ -50,7 +109,7 @@ export function FAQ() {
           transition={{ duration: 0.6 }}
           className="mt-14 ring-gradient rounded-3xl glass p-2 sm:p-4"
         >
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" collapsible defaultValue="item-0" className="w-full">
             {FAQS.map((f, i) => (
               <AccordionItem
                 key={i}
