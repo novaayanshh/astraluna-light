@@ -11,7 +11,6 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-m
 const NAV_ITEMS = [
   {
     label: "Horoscopes",
