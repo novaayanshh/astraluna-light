@@ -1,20 +1,55 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "@tanstack/react-router";
 import { ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
 import { AI_ASTROLOGERS } from "@/data/astrologers";
 import { SectionHeading } from "./Categories";
 
+// Duplicated once so the marquee can loop seamlessly.
+const LOOP_ASTROLOGERS = [...AI_ASTROLOGERS, ...AI_ASTROLOGERS];
+
 export function Astrologers() {
   const trackRef = useRef<HTMLUListElement>(null);
+  const pausedRef = useRef(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   const scrollByCard = (dir: 1 | -1) => {
     const track = trackRef.current;
     if (!track) return;
     const card = track.querySelector("li");
     const amount = card ? card.getBoundingClientRect().width + 20 : 300;
+    setIsPaused(true);
     track.scrollBy({ left: dir * amount, behavior: "smooth" });
+    window.setTimeout(() => setIsPaused(false), 2500);
   };
+
+  useEffect(() => {
+    pausedRef.current = isPaused;
+  }, [isPaused]);
+
+  // Continuous right-to-left auto-scroll (marquee), pauses on hover/touch/manual interaction.
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    let frame: number;
+    const speed = 0.6; // px per frame
+
+    const step = () => {
+      if (!pausedRef.current) {
+        const halfWidth = track.scrollWidth / 2;
+        if (track.scrollLeft >= halfWidth) {
+          track.scrollLeft -= halfWidth;
+        } else {
+          track.scrollLeft += speed;
+        }
+      }
+      frame = requestAnimationFrame(step);
+    };
+
+    frame = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(frame);
+  }, []);
 
   return (
     <section id="astrologers" className="relative py-24 lg:py-32">
@@ -39,18 +74,22 @@ export function Astrologers() {
               hidden: {},
               show: { transition: { staggerChildren: 0.06 } },
             }}
-            className="no-scrollbar flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-1 pb-2"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
+            className="no-scrollbar flex gap-5 overflow-x-auto scroll-smooth px-1 pb-2"
           >
-            {AI_ASTROLOGERS.map((a) => (
+            {LOOP_ASTROLOGERS.map((a, i) => (
               <motion.li
-                key={a.slug}
+                key={`${a.slug}-${i}`}
                 variants={{
                   hidden: { opacity: 0, y: 24 },
                   show: { opacity: 1, y: 0 },
                 }}
                 whileHover={{ y: -4 }}
                 transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                className="w-[280px] shrink-0 snap-start"
+                className="w-[280px] shrink-0"
               >
                 <Link
                   to="/astrologers/$slug"

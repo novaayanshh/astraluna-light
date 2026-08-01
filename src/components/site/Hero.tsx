@@ -10,6 +10,38 @@ const STATS = [
   { value: "24/7", label: "Availability" },
 ];
 
+const ZODIAC_GLYPHS = [
+  { name: "Aries", glyph: "मेष" },
+  { name: "Taurus", glyph: "वृषभ" },
+  { name: "Gemini", glyph: "मिथु" },
+  { name: "Cancer", glyph: "कर्क" },
+  { name: "Leo", glyph: "सिंह" },
+  { name: "Virgo", glyph: "कन्या" },
+  { name: "Libra", glyph: "तुला" },
+  { name: "Scorpio", glyph: "वृश्चि" },
+  { name: "Sagittarius", glyph: "धनु" },
+  { name: "Capricorn", glyph: "मकर" },
+  { name: "Aquarius", glyph: "कुंभ" },
+  { name: "Pisces", glyph: "मीन" },
+];
+
+const STAR_DOTS = [
+  { x: 138, y: 52, r: 2.2, o: 0.7 },
+  { x: 610, y: 32, r: 1.6, o: 0.5 },
+  { x: 60, y: 178, r: 2, o: 0.6 },
+  { x: 430, y: 108, r: 1.8, o: 0.55 },
+  { x: 22, y: 340, r: 2.4, o: 0.65 },
+  { x: 468, y: 300, r: 1.7, o: 0.5 },
+  { x: 92, y: 470, r: 2, o: 0.6 },
+  { x: 380, y: 460, r: 1.6, o: 0.45 },
+  { x: 210, y: 22, r: 1.8, o: 0.55 },
+  { x: 300, y: 480, r: 2.1, o: 0.6 },
+  { x: 440, y: 380, r: 1.5, o: 0.4 },
+  { x: 150, y: 400, r: 1.9, o: 0.5 },
+  { x: 350, y: 60, r: 1.6, o: 0.45 },
+  { x: 40, y: 250, r: 2, o: 0.55 },
+];
+
 export function Hero() {
   return (
     <section
@@ -142,52 +174,77 @@ export function Hero() {
           transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
           className="relative mx-auto hidden aspect-square w-full max-w-[520px] lg:block"
         >
-          <div className="absolute inset-0 rounded-full border border-primary/25" />
-          <div className="absolute inset-6 rounded-full border border-primary/20" />
-          <div className="absolute inset-14 rounded-full border border-primary/15" />
-          <div className="absolute inset-24 rounded-full border border-primary/10" />
+          <svg viewBox="0 0 500 500" className="absolute inset-0 h-full w-full" aria-hidden>
+            <defs>
+              <radialGradient id="sunGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="oklch(0.98 0.05 90)" />
+                <stop offset="45%" stopColor="oklch(0.88 0.18 70)" />
+                <stop offset="100%" stopColor="oklch(0.72 0.19 55)" />
+              </radialGradient>
+            </defs>
 
-          {/* Zodiac chips */}
-          {[
-            { name: "Aries", image: "/aries-KxO7nP9A.webp" },
-            { name: "Taurus", image: "/taurus-BYxEmmrx.webp" },
-            { name: "Gemini", image: "/gemini-6zulReUB.webp" },
-            { name: "Cancer", image: "/cancer-C_dxN-8s.webp" },
-            { name: "Leo", image: "/leo-_NR55xqJ.webp" },
-            { name: "Virgo", image: "/virgo-BNP1NYmB.webp" },
-            { name: "Libra", image: "/libra-BmQ7M_q-.webp" },
-            { name: "Scorpio", image: "/scorpio-E6aDllmG.webp" },
-            { name: "Sagittarius", image: "/sagittarius-CTZbtTko.webp" },
-            { name: "Capricorn", image: "/capricorn-CaigM1Sd.webp" },
-            { name: "Aquarius", image: "/aquarius-CuQ8WK_q.webp" },
-            { name: "Pisces", image: "/pisces-DwiBbkF6.webp" },
-          ].map((sign, i) => {
+            {/* orbit guide rings */}
+            <circle cx="250" cy="250" r="230" fill="none" stroke="oklch(0.72 0.19 55 / 0.2)" strokeWidth="1" strokeDasharray="2 7" />
+            <circle cx="250" cy="250" r="192" fill="none" stroke="oklch(0.72 0.19 55 / 0.28)" strokeWidth="1" />
+            <circle cx="250" cy="250" r="150" fill="none" stroke="oklch(0.72 0.19 55 / 0.16)" strokeWidth="1" strokeDasharray="2 7" />
+
+            {/* tick marks along the outer ring */}
+            {Array.from({ length: 24 }).map((_, i) => {
+              const a = (i / 24) * Math.PI * 2;
+              const x1 = 250 + 210 * Math.cos(a);
+              const y1 = 250 + 210 * Math.sin(a);
+              const x2 = 250 + 219 * Math.cos(a);
+              const y2 = 250 + 219 * Math.sin(a);
+              return (
+                <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} stroke="oklch(0.55 0.02 60 / 0.35)" strokeWidth="1" />
+              );
+            })}
+
+            {/* scattered stardust */}
+            {STAR_DOTS.map((d, i) => (
+              <circle key={i} cx={d.x} cy={d.y} r={d.r} fill="oklch(0.75 0.19 55)" opacity={d.o} />
+            ))}
+
+            {/* floating planet dots */}
+            <circle cx="368" cy="128" r="8" fill="oklch(0.66 0.2 38)" />
+            <circle cx="392" cy="238" r="6.5" fill="oklch(0.75 0.19 55)" />
+
+            {/* sun rays */}
+            <g transform="translate(250,250)">
+              {Array.from({ length: 16 }).map((_, i) => (
+                <path
+                  key={i}
+                  d="M0,-58 L4,-80 L-4,-80 Z"
+                  fill="oklch(0.82 0.19 65 / 0.55)"
+                  transform={`rotate(${(360 / 16) * i})`}
+                />
+              ))}
+            </g>
+
+            {/* sun core */}
+            <circle cx="250" cy="250" r="58" fill="url(#sunGlow)" />
+            <circle cx="250" cy="250" r="22" fill="white" opacity="0.9" />
+          </svg>
+
+          {/* Zodiac glyph chips */}
+          {ZODIAC_GLYPHS.map((sign, i) => {
             const angle = (i / 12) * Math.PI * 2 - Math.PI / 2;
-            const x = 50 + 48 * Math.cos(angle);
-            const y = 50 + 48 * Math.sin(angle);
+            const x = 50 + 43 * Math.cos(angle);
+            const y = 50 + 43 * Math.sin(angle);
             return (
               <div
                 key={sign.name}
                 style={{ left: `${x}%`, top: `${y}%` }}
                 className="absolute -translate-x-1/2 -translate-y-1/2"
               >
-                <div className="grid h-10 w-10 place-items-center overflow-hidden rounded-full bg-card shadow-[0_6px_20px_-8px_oklch(0.7_0.2_55/0.5)] ring-1 ring-primary/20">
-                  <img
-                    src={sign.image}
-                    alt={sign.name}
-                    loading="lazy"
-                    width={40}
-                    height={40}
-                    className="h-full w-full object-contain p-1"
-                  />
+                <div className="grid h-12 w-12 place-items-center rounded-full border-[1.5px] border-primary/50 bg-white shadow-[0_6px_20px_-8px_oklch(0.7_0.2_55/0.35)]">
+                  <span className="font-medium text-[11px] leading-none text-[oklch(0.48_0.12_45)]">
+                    {sign.glyph}
+                  </span>
                 </div>
               </div>
             );
           })}
-
-          {/* Sun core */}
-          <div className="absolute left-1/2 top-1/2 h-40 w-40 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-[oklch(0.95_0.15_85)] via-[oklch(0.82_0.19_65)] to-[oklch(0.7_0.22_45)] shadow-[0_0_80px_oklch(0.78_0.2_65/0.7)] animate-glow-pulse" />
-          <div className="absolute left-1/2 top-1/2 h-16 w-16 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-[0_0_60px_oklch(1_0.1_85/0.9)]" />
         </motion.div>
       </div>
 

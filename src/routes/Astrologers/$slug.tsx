@@ -3,7 +3,7 @@ import { AstrologerDetail } from "@/components/site/AstrologerDetail";
 import { Footer } from "@/components/site/Footer";
 import { getAstrologerBySlug } from "@/data/astrologers";
 
-export const Route = createFileRoute("/Astrologers/$slug")({
+export const Route = createFileRoute("/astrologers/$slug")({
   loader: ({ params }) => {
     const astrologer = getAstrologerBySlug(params.slug);
     if (!astrologer) throw notFound();
