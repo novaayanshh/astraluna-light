@@ -46,7 +46,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative isolate overflow-hidden pt-32 pb-24 lg:pt-40 lg:pb-32"
+      className="relative isolate overflow-hidden pt-[176px] pb-24 lg:pt-[208px] lg:pb-32"
     >
       {/* Warm backdrop wash */}
       <div className="absolute inset-0 -z-10">

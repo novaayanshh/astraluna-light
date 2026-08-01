@@ -156,7 +156,7 @@ export function HoroscopePage() {
 
   return (
     <>
-      <section className="relative pb-16 pt-36 lg:pt-44">
+      <section className="relative pb-16 pt-[192px] lg:pt-[224px]">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
           <SectionHeading
             eyebrow="Horoscopes"
