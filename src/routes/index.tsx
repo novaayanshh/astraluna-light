@@ -8,7 +8,6 @@ import { AstrologyInfo } from "@/components/site/AstrologyInfo";
 import { Stats } from "@/components/site/Stats";
 import { Testimonials } from "@/components/site/Testimonials";
 import { FAQ } from "@/components/site/FAQ";
-import { CTA } from "@/components/site/CTA";
 import { Footer } from "@/components/site/Footer";
 
 export const Route = createFileRoute("/")({
@@ -27,7 +26,6 @@ function Home() {
         <Stats />
         <Testimonials />
         <FAQ />
-        <CTA />
       </main>
       <Footer />
       <Toaster
