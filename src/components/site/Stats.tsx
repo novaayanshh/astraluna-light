@@ -25,11 +25,11 @@ export function Stats() {
               className="rounded-2xl border border-border/60 bg-white p-6 text-center shadow-sm sm:p-8"
             >
               <div
-                className={`font-display text-4xl font-extrabold tracking-tight bg-gradient-to-br bg-clip-text text-transparent sm:text-5xl ${s.color}`}
+                className={`font-sans text-4xl font-black tracking-tight bg-gradient-to-br bg-clip-text text-transparent sm:text-5xl ${s.color}`}
               >
                 {s.value}
               </div>
-              <div className="mt-2 text-sm font-medium text-foreground/70 sm:text-base">
+              <div className="mt-2 text-sm font-semibold text-foreground sm:text-base">
                 {s.label}
               </div>
             </motion.li>
