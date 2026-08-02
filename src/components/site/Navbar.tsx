@@ -120,7 +120,7 @@ export function Navbar() {
                 />
                 <Link
                   to={item.href}
-                  className="group flex items-center gap-1 rounded-full px-3 py-2 text-sm font-semibold text-foreground/80 transition-colors hover:text-primary data-[status=active]:text-primary"
+                  className="group flex items-center gap-1 rounded-full px-3 py-2 text-sm font-semibold text-foreground transition-colors hover:text-primary data-[status=active]:text-primary"
                 >
                   {item.label}
                   {hasDropdown && (
