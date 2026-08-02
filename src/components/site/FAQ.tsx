@@ -12,7 +12,7 @@ const FAQS = [
     q: "How do I consult an online astrologer?",
     a: (
       <>
-        It's quite simple. Visit <strong className="text-primary">Astrotring.com</strong>,
+        It's quite simple. Visit <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a>,
         browse through our carefully verified astrologers based on their expertise, ratings,
         and reviews, and book a session via chat, call, or video call. You'll need to share
         your birth date, time, and place. Your astrologer will then analyze your chart and
@@ -25,7 +25,7 @@ const FAQS = [
     q: "How can astrology help in love, marriage, and relationships?",
     a: (
       <>
-        On <strong className="text-primary">Astrotring.com</strong>, our astrologers read the
+        On <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a>, our astrologers read the
         5th and 7th houses along with Venus's placement to assess compatibility, timing for
         marriage, and challenges in existing relationships — offering practical remedies for
         a stronger, healthier bond.
@@ -36,7 +36,7 @@ const FAQS = [
     q: "What role does astrology play in career and finance?",
     a: (
       <>
-        Career and finance readings on <strong className="text-primary">Astrotring.com</strong>{" "}
+        Career and finance readings on <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a>{" "}
         study the 2nd, 10th and 11th houses along with the placement of Jupiter and Saturn to
         guide clients on job changes, business timing, investments and long-term financial
         stability.
@@ -47,7 +47,7 @@ const FAQS = [
     q: "Can astrology help with health-related concerns?",
     a: (
       <>
-        Yes. Medical astrology on <strong className="text-primary">Astrotring.com</strong> reads
+        Yes. Medical astrology on <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a> reads
         the 6th and 8th houses to identify planetary influences on health and recommend
         remedial measures — though it's always meant to complement, not replace, medical advice.
       </>
@@ -58,7 +58,7 @@ const FAQS = [
     a: (
       <>
         An accurate birth time gives the most precise chart, but{" "}
-        <strong className="text-primary">Astrotring.com</strong> can still generate a
+        <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a> can still generate a
         Sun-sign-based reading with strong accuracy if it's unknown. For a full Kundli, our
         astrologers also offer a birth-time rectification service.
       </>
@@ -69,7 +69,7 @@ const FAQS = [
     a: (
       <>
         Vedic astrology treats predictions as tendencies, not fixed outcomes. Astrologers on{" "}
-        <strong className="text-primary">Astrotring.com</strong> recommend remedies — mantras,
+        <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a> recommend remedies — mantras,
         gemstones, rituals and lifestyle adjustments — to ease the effect of challenging
         planetary placements.
       </>
@@ -80,7 +80,7 @@ const FAQS = [
     a: (
       <>
         Reliability comes down to verified astrologers and transparent reviews. Every
-        astrologer on <strong className="text-primary">Astrotring.com</strong> is vetted for
+        astrologer on <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a> is vetted for
         expertise and rated by real clients, so you can choose with confidence.
       </>
     ),
@@ -97,7 +97,7 @@ export function FAQ() {
           description={
             <>
               Here are the same answers, now branded with{" "}
-              <strong className="text-primary">Astrotring.com</strong> wherever relevant:
+              <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a> wherever relevant:
             </>
           }
         />

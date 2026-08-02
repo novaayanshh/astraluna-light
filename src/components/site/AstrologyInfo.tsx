@@ -15,7 +15,7 @@ const INFO = [
         Astrology has been observed and refined over thousands of years. It works because it's
         based on patterns — the same planetary cycles that influenced people centuries ago
         continue to shape our lives today. When an experienced astrologer on{" "}
-        <strong className="text-primary">Astrotring.com</strong> reads your unique birth chart,
+        <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a> reads your unique birth chart,
         they're not guessing — they're interpreting a deeply personal cosmic map that reflects
         your personality, timing, and life tendencies. It feels accurate because it's specific to
         you, not generic.
@@ -29,7 +29,7 @@ const INFO = [
         Astrology doesn't predict events like a script written in stone. Think of it more like a
         weather forecast — it shows likely conditions, not certainties. What it does very well is
         highlight patterns, timing, and tendencies in your life. Many people who consult
-        astrologers on <strong className="text-primary">Astrotring.com</strong> find that
+        astrologers on <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a> find that
         astrological readings reflect their experiences surprisingly well. Your free will always
         plays a role, but astrology gives you a valuable heads-up about what energies are at play
         around you.
@@ -42,7 +42,7 @@ const INFO = [
       <>
         Astrology is the study of how celestial bodies — the Sun, Moon, and planets — influence
         human life and behavior. At the moment you were born, these planets were positioned in
-        specific places in the sky. At <strong className="text-primary">Astrotring.com</strong>,
+        specific places in the sky. At <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a>,
         our astrologers map these positions into a birth chart and interpret how they shape your
         personality, relationships, career, and life events. It's essentially a language that
         translates cosmic patterns into human experiences.
@@ -58,7 +58,7 @@ const INFO = [
         positions — and places heavy emphasis on the Moon sign, planetary periods (dashas), and
         karmic patterns. Western astrology uses the tropical zodiac — based on seasons — and
         focuses more on the Sun sign and psychological personality traits. At{" "}
-        <strong className="text-primary">Astrotring.com</strong>, we offer expert guidance in
+        <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a>, we offer expert guidance in
         both systems, helping you choose the approach that resonates most with your journey.
       </>
     ),
@@ -70,7 +70,7 @@ const INFO = [
         A birth chart, also called a Kundli or natal chart, is a snapshot of the sky at the exact
         moment and place you were born. It maps where every planet was positioned across 12
         houses and zodiac signs. Think of it as your personal cosmic fingerprint — completely
-        unique to you. At <strong className="text-primary">Astrotring.com</strong>, our experts
+        unique to you. At <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a>, our experts
         use your birth chart to reveal your strengths, weaknesses, emotional nature, karmic path,
         and the timing of key life events. It's the foundation of every meaningful reading we
         offer.
@@ -83,7 +83,7 @@ const INFO = [
       <>
         Online astrology uses your birth details to analyze current and upcoming planetary
         transits and how they interact with your birth chart. At{" "}
-        <strong className="text-primary">Astrotring.com</strong>, our astrologers help identify
+        <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a>, our astrologers help identify
         favorable periods for career moves, relationships, financial decisions, or personal
         growth — and also flag times to be cautious. It's like having a cosmic calendar that
         helps you plan smarter and act at the right time, all from the comfort of your home.
@@ -104,7 +104,7 @@ export function AstrologyInfo() {
               Astrology is an ancient, science-backed system that decodes planetary and cosmic
               influences on human life. It goes beyond fortune-telling — it's a tool for
               self-awareness, decision-making, and personal growth.{" "}
-              <strong className="text-primary">Astrotring.com</strong> makes this wisdom
+              <a href="https://astraluna-light.vercel.app/" className="font-semibold text-primary underline underline-offset-2 hover:opacity-80">Astrotring.com</a> makes this wisdom
               accessible, affordable, and convenient for everyone through birth chart analysis,
               daily horoscopes, personalized consultations, and practical remedies rooted in
               Vedic tradition.
