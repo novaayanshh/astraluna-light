@@ -41,6 +41,7 @@ type Product = {
   icon: LucideIcon;
   tint: string;
   blurb: string;
+  image: string;
 };
 
 const CATEGORIES: Category[] = [
@@ -70,6 +71,7 @@ const PRODUCTS: Product[] = [
     icon: Gem,
     tint: CATEGORY_TINT.Gemstones,
     blurb: "Sun gemstone for confidence & leadership",
+    image: "/01_certified_ruby_manik.jpg",
   },
   {
     id: "yellow-sapphire",
@@ -81,6 +83,7 @@ const PRODUCTS: Product[] = [
     icon: Gem,
     tint: CATEGORY_TINT.Gemstones,
     blurb: "Jupiter's stone for wisdom & prosperity",
+    image: "/02_yellow_sapphire_pukhraj.jpg",
   },
   {
     id: "rudraksha-5",
@@ -92,6 +95,7 @@ const PRODUCTS: Product[] = [
     icon: CircleDot,
     tint: CATEGORY_TINT["Malas & Rudraksha"],
     blurb: "108 beads for meditation & calm",
+    image: "/03_5_mukhi_rudraksha_mala.jpg",
   },
   {
     id: "tulsi-mala",
@@ -103,6 +107,7 @@ const PRODUCTS: Product[] = [
     icon: Feather,
     tint: CATEGORY_TINT["Malas & Rudraksha"],
     blurb: "Hand-strung holy basil beads",
+    image: "/04_sacred_tulsi_mala.jpg",
   },
   {
     id: "sri-yantra",
@@ -114,6 +119,7 @@ const PRODUCTS: Product[] = [
     icon: Compass,
     tint: CATEGORY_TINT["Yantras & Idols"],
     blurb: "Attracts abundance & harmony",
+    image: "/05_sri_yantra_brass.jpg",
   },
   {
     id: "ganesh-idol",
@@ -125,6 +131,7 @@ const PRODUCTS: Product[] = [
     icon: Sparkles,
     tint: CATEGORY_TINT["Yantras & Idols"],
     blurb: "Remover of obstacles, new beginnings",
+    image: "/06_ganesh_idol_brass.jpg",
   },
   {
     id: "tarot-deck",
@@ -136,6 +143,7 @@ const PRODUCTS: Product[] = [
     icon: BookOpenText,
     tint: CATEGORY_TINT["Tarot & Books"],
     blurb: "78-card deck with guidebook",
+    image: "/07_celestial_tarot_deck.jpg",
   },
   {
     id: "vedic-book",
@@ -147,6 +155,7 @@ const PRODUCTS: Product[] = [
     icon: BookOpenText,
     tint: CATEGORY_TINT["Tarot & Books"],
     blurb: "A practical guide to your Kundli",
+    image: "/08_vedic_astrology_handbook.jpg",
   },
   {
     id: "havan-kit",
@@ -158,6 +167,7 @@ const PRODUCTS: Product[] = [
     icon: Flame,
     tint: CATEGORY_TINT["Puja Essentials"],
     blurb: "Complete kit for home rituals",
+    image: "/09_havan_puja_kit.jpg",
   },
 ];
 
@@ -242,13 +252,17 @@ export function Shop() {
                   {cart.map((item) => {
                     const product = PRODUCTS.find((p) => p.id === item.id);
                     if (!product) return null;
-                    const Icon = product.icon;
                     return (
                       <li key={item.id} className="flex items-center gap-3 rounded-2xl glass p-3">
                         <div
-                          className={`grid h-14 w-14 shrink-0 place-items-center rounded-xl bg-gradient-to-br ${product.tint}`}
+                          className={`relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-gradient-to-br ${product.tint}`}
                         >
-                          <Icon className="h-6 w-6 text-foreground/70" />
+                          <img
+                            src={product.image}
+                            alt={product.name}
+                            className="h-full w-full object-cover"
+                            loading="lazy"
+                          />
                         </div>
                         <div className="min-w-0 flex-1">
                           <p className="truncate text-sm font-semibold text-foreground">
@@ -349,10 +363,15 @@ export function Shop() {
                   <div
                     className={`relative flex aspect-[4/3] items-center justify-center overflow-hidden bg-gradient-to-br ${product.tint}`}
                   >
-                    <Icon
-                      className="h-16 w-16 text-foreground/60 transition-transform duration-500 group-hover:scale-110"
-                      strokeWidth={1.5}
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
+                    <div className="absolute left-3 top-3 grid h-8 w-8 place-items-center rounded-full glass-strong">
+                      <Icon className="h-4 w-4 text-foreground/70" strokeWidth={1.5} />
+                    </div>
                     <div className="absolute right-3 top-3 flex items-center gap-1 rounded-full glass-strong px-2.5 py-1 text-xs">
                       <Star className="h-3 w-3 fill-gold text-gold" />
                       <span className="font-medium">{product.rating}</span>
